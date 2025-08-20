@@ -1,11 +1,11 @@
 import { defineStackbitConfig, DocumentStringLikeFieldNonLocalized, SiteMapEntry } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
-import { allModels } from 'sources/local/models';
+import { Page, BlogPost, CTIItem } from 'sources/local/models/CustomModels';
 
 const gitContentSource = new GitContentSource({
     rootPath: __dirname,
     contentDirs: ['content'],
-    models: Object.values(allModels),
+    models: [Page, BlogPost, CTIItem],
     assetsConfig: {
         referenceType: 'static',
         staticDir: 'public',
@@ -31,27 +31,28 @@ export const config = defineStackbitConfig({
             .map((document) => {
                 let slug = (document.fields.slug as DocumentStringLikeFieldNonLocalized)?.value;
                 if (!slug) return null;
-                /* Remove the leading slash in order to generate correct urlPath
-                regardless of whether the slug is '/', 'slug' or '/slug' */
                 slug = slug.replace(/^\/+/, '');
                 switch (document.modelName) {
-                    case 'PostFeedLayout':
-                        return {
-                            urlPath: '/blog',
-                            document: document
-                        };
-                    case 'PostLayout':
+                    case 'BlogPost':
                         return {
                             urlPath: `/blog/${slug}`,
                             document: document
                         };
-                    default:
+                    case 'CTIItem':
+                        return {
+                            urlPath: `/intel/${slug}`,
+                            document: document
+                        };
+                    case 'Page':
                         return {
                             urlPath: `/${slug}`,
                             document: document
                         };
+                    default:
+                        return null;
                 }
-            });
+            })
+            .filter(Boolean);
     }
 });
 
