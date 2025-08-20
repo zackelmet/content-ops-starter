@@ -4,17 +4,15 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: Unblock your team boost your time to production
+      text: Hacker Analytics: Uncover Threats, Visualize Insights
       color: text-dark
       type: TitleBlock
-    subtitle: Subtitle goes here
+    subtitle: Real-time threat intelligence and analytics for security teams
     text: >
-      A Netlify Create website is a git repo that you own. Every code commit is
-      instantly reflected in the visual editor and since every visual edit is a
-      git commit, git workflows and collaboration just work.
+      Hacker Analytics is an open-source platform for tracking, analyzing, and visualizing cybersecurity threats. Aggregate data from multiple sources, monitor hacker activity, and gain actionable insights to protect your organization. Built for security professionals, researchers, and teams who need clarity and speed.
     actions:
-      - label: Get started
-        altText: ''
+      - label: Get Started
+        altText: 'Begin your threat analysis journey'
         url: /
         showIcon: false
         icon: arrowRight
@@ -22,9 +20,9 @@ sections:
         style: secondary
         elementId: ''
         type: Button
-      - label: See Tutorials
-        altText: ''
-        url: /
+      - label: View Documentation
+        altText: 'Read the docs'
+        url: /docs
         showIcon: true
         icon: arrowRight
         iconPosition: right
@@ -33,11 +31,11 @@ sections:
         type: Link
     media:
       url: /images/main-hero.svg
-      altText: Unblock your team boost your time to production preview
+      altText: Hacker Analytics dashboard preview
       elementId: ''
       type: ImageBlock
     badge:
-      label: This is a badge
+      label: Open Source
       color: text-primary
       type: Badge
     elementId: ''
