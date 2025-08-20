@@ -4,12 +4,11 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: Hacker Analytics: Uncover Threats, Visualize Insights
+      text: "Hacker Analytics: Uncover Threats, Visualize Insights"
       color: text-dark
       type: TitleBlock
-    subtitle: Real-time threat intelligence and analytics for security teams
-    text: >
-      Hacker Analytics is an open-source platform for tracking, analyzing, and visualizing cybersecurity threats. Aggregate data from multiple sources, monitor hacker activity, and gain actionable insights to protect your organization. Built for security professionals, researchers, and teams who need clarity and speed.
+  subtitle: "Real-time threat intelligence and analytics for security teams"
+  text: "Hacker Analytics is an open-source platform for tracking, analyzing, and visualizing cybersecurity threats. Aggregate data from multiple sources, monitor hacker activity, and gain actionable insights to protect your organization. Built for security professionals, researchers, and teams who need clarity and speed."
     actions:
       - label: Get Started
         altText: 'Begin your threat analysis journey'
