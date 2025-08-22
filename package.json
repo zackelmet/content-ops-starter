@@ -27,11 +27,12 @@
         "@stackbit/cms-git": "^1.0.32",
         "@stackbit/types": "^2.1.10",
         "@types/glob": "^8.1.0",
-        "@types/react": "^19.1.0",
+        "@types/node": "24.3.0",
+        "@types/react": "19.1.11",
         "@types/react-dom": "^19.1.1",
         "autoprefixer": "^10.4.19",
         "prettier": "^3.3.2",
-        "typescript": "^5.6.2"
+        "typescript": "5.9.2"
     },
     "main": "next.config.js"
 }
