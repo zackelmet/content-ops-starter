@@ -53,7 +53,7 @@ sections:
           - pr-16
   - subtitle: Intelligently Sourced
     images:
-      - url: /images/empathy-logo.svg
+      - url: /images/TOR1.png
         altText: Empathy logo
         type: ImageBlock
       - url: /images/wellster-logo.svg
