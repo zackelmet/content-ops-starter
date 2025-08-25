@@ -1,4 +1,5 @@
 import { BackgroundImage } from './BackgroundImage';
+import { Page, BlogPost, CTIItem } from './CustomModels';
 import { Badge } from './Badge';
 import { Button } from './Button';
 import { CarouselSection } from './CarouselSection';
@@ -86,5 +87,8 @@ export const allModels = {
     VideoBlock,
     MetaTag,
     FooterLinksGroup,
-    Seo
+    Seo,
+    Page,
+    BlogPost,
+    CTIItem
 };
