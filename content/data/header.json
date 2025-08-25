@@ -30,15 +30,6 @@
             "type": "Link"
         },
         {
-            "label": "Careers",
-            "altText": "Careers page",
-            "url": "/careers",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
             "type": "SubNav",
             "label": "Dropdown",
             "altText": "Dropdown",
