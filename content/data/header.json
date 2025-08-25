@@ -13,33 +13,7 @@
     },
     "primaryLinks": [
         {
-            "label": "Pricing",
-            "url": "/pricing",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Blog",
-            "altText": "Blog",
-            "url": "/blog",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Careers",
-            "altText": "Careers page",
-            "url": "/careers",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Dropdown",
+            "label": "Tools",
             "altText": "Dropdown",
             "links": [
                 {
@@ -69,6 +43,26 @@
             ],
             "labelStyle": "secondary",
             "type": "SubNav"
+        },
+        {
+            "label": "Blog",
+            "altText": "Blog",
+            "url": "/blog",
+            "icon": "arrowRight",
+            "iconPosition": "right",
+            "style": "secondary",
+            "type": "Link"
+        },
+        {
+            "type": "Link",
+            "label": "See Tutorials",
+            "altText": "",
+            "url": "/pricing",
+            "showIcon": false,
+            "icon": "arrowRight",
+            "iconPosition": "right",
+            "style": "secondary",
+            "elementId": ""
         }
     ],
     "secondaryLinks": [
