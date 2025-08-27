@@ -24,6 +24,14 @@ export const config = defineStackbitConfig({
         type: 'files',
         presetDirs: ['sources/local/presets']
     },
+
+    // 👇 Explicitly mark which models are "pages"
+    modelExtensions: [
+        { name: 'Page', type: 'page', urlPath: '/{slug}' },
+        { name: 'BlogPost', type: 'page', urlPath: '/blog/{slug}' },
+        { name: 'CTIItem', type: 'page', urlPath: '/intel/{slug}' }
+    ],
+
     siteMap: ({ documents, models }): SiteMapEntry[] => {
         const pageModels = models.filter((model) => model.type === 'page').map((model) => model.name);
         return documents
@@ -52,7 +60,7 @@ export const config = defineStackbitConfig({
                         return null;
                 }
             })
-            .filter(Boolean);
+            .filter(Boolean) as SiteMapEntry[];
     }
 });
 
