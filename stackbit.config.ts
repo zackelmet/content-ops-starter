@@ -4,7 +4,7 @@ import { Page, BlogPost, CTIItem } from 'sources/local/models/CustomModels';
 
 const gitContentSource = new GitContentSource({
     rootPath: __dirname,
-    contentDirs: ['content/pages', 'content/blog/posts'],
+    contentDirs: ['content/pages', 'content/pages/blog/'],
     models: [Page, BlogPost, CTIItem],
     assetsConfig: {
         referenceType: 'static',
