@@ -8,7 +8,7 @@ import { Page, BlogPost, CTIItem } from 'sources/local/models/CustomModels';
 
 const gitContentSource = new GitContentSource({
     rootPath: __dirname,
-    contentDirs: ['content'],
+    contentDirs: ['content/pages'], // 👈 point directly to pages dir
     models: [Page, BlogPost, CTIItem],
     assetsConfig: {
         referenceType: 'static',
@@ -29,14 +29,18 @@ export const config = defineStackbitConfig({
         presetDirs: ['sources/local/presets']
     },
 
-    // ✅ Explicitly mark which models are "pages"
+    // ✅ Explicitly define page types
     modelExtensions: [
+        // Top-level pages like about.md, index.md
         { name: 'Page', type: 'page', urlPath: '/{slug}' },
+
+        // Blog posts under content/pages/blog/
         { name: 'BlogPost', type: 'page', urlPath: '/blog/{slug}' },
+
+        // Custom CTI items under content/pages/intel/
         { name: 'CTIItem', type: 'page', urlPath: '/intel/{slug}' }
     ],
 
-    // ✅ Sitemap with stableId and safe slug handling
     siteMap: ({ documents, models }): SiteMapEntry[] => {
         const pageModels = models
             .filter((model) => model.type === 'page')
@@ -59,7 +63,7 @@ export const config = defineStackbitConfig({
                 }
 
                 return {
-                    stableId: document.id,   // ✅ stable ID required by Visual Editor
+                    stableId: document.id,   // stable ID is required for Visual Editor
                     urlPath,
                     document
                 };
