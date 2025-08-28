@@ -1,11 +1,12 @@
 import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
 import { Page, BlogPost, CTIItem } from 'sources/local/models/CustomModels';
+import { allModels } from 'sources/local/models';
 
 const gitContentSource = new GitContentSource({
     rootPath: __dirname,
     contentDirs: ['content/pages', 'content/blog'],
-    models: [Page, BlogPost, CTIItem],
+    models: Object.values(allModels),
     assetsConfig: {
         referenceType: 'static',
         staticDir: 'public',
