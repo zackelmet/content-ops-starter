@@ -20,8 +20,11 @@ export default function Section(props) {
                 styles?.margin ? mapStyles({ margin: styles?.margin }) : undefined,
                 styles?.padding ? mapStyles({ padding: styles?.padding }) : 'px-4 py-28'
             )}
+            style={{ background: 'transparent' }}
             {...getDataAttrs(props)}
         >
+            {/* Always render particles background first so it's behind everything */}
+            {props.showParticles && <props.ParticlesComponent />}
             {backgroundImage && <BackgroundImage {...backgroundImage} className="absolute inset-0" />}
             <div className="w-full max-w-7xl mx-auto relative">{children}</div>
         </div>

@@ -292,6 +292,13 @@
     }
 }
 
+/* Ensure the main layout background is transparent for animated particles */
+.sb-page,
+.sb-base,
+.sb-default-base-layout {
+  background: transparent !important;
+}
+
 @layer utilities {
     .underline-line-through {
         text-decoration-line: underline line-through
