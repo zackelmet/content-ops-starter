@@ -5,7 +5,7 @@ import { allModels } from 'sources/local/models';
 
 const gitContentSource = new GitContentSource({
     rootPath: __dirname,
-    contentDirs: ['content/pages', 'content/blog'],
+    contentDirs: ['content/pages', 'content/pages/blog', 'content/intel', 'content/data'],
     models: Object.values(allModels),
     assetsConfig: {
         referenceType: 'static',
