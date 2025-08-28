@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import AnimatedParticlesBackground from '../../AnimatedParticlesBackground';
 import { getBaseLayoutComponent } from '../../../utils/base-layout';
 import { getComponent } from '../../components-registry';
 

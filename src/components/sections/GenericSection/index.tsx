@@ -1,4 +1,5 @@
 import * as React from 'react';
+import AnimatedParticlesBackground from '../../AnimatedParticlesBackground';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
@@ -26,6 +27,8 @@ export default function GenericSection(props) {
             styles={styles?.self}
             {...getDataAttrs(props)}
         >
+            {/* Animated background only for hero section */}
+            <AnimatedParticlesBackground />
             <div
                 className={classNames(
                     'w-full',
