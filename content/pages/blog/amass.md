@@ -2,8 +2,7 @@
 title: Amass
 slug: amass
 date: '2025-08-27'
-excerpt: >-
-  Subdomain and asset discovery
+excerpt: Subdomain and asset discovery
 featuredImage:
   url: undefined
   altText: Amass
@@ -12,10 +11,14 @@ featuredImage:
       borderRadius: large
   type: ImageBlock
 isFeatured: false
-tags: [osint, recon, dns]
+tags:
+  - osint
+  - recon
+  - dns
 category: Reconnaissance & OSINT
-source: https://github.com/owasp-amass/amass
+source: 'https://github.com/owasp-amass/amass'
 type: PostLayout
+colors: bg-dark-fg-light
 ---
 
 
