@@ -19,10 +19,15 @@ seo:
   metaDescription: You can add the excerpt and main keywords of your blog post here.
   socialImage: /images/abstract-feature2.svg
   type: Seo
-colors: bg-light-fg-dark
+colors: bg-dark-fg-light
 styles:
   self:
     flexDirection: row
+    margin:
+      - mr-1
+      - ml-1
+      - mt-1
+      - mb-1
 type: PostLayout
 author: content/data/person1.json
 ---

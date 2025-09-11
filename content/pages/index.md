@@ -98,8 +98,8 @@ sections:
     actions: []
     elementId: ''
     variant: three-col-grid
-    colors: bg-light-fg-dark
-    hoverEffect: shadow-plus-move-up
+    colors: bg-dark-fg-light
+    hoverEffect: thick-underline
     styles:
       self:
         justifyContent: center
