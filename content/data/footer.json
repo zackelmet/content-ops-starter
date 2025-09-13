@@ -1,16 +1,16 @@
 {
     "logo": {
-        "url": "/images/logo-white.svg",
+        "url": "/images/Untitled (150 x 150 px).png",
         "altText": "Logo light",
         "type": "ImageBlock"
     },
     "text": "A description of your brand",
     "primaryLinks": {
-        "title": "Product",
+        "title": "Blogs",
         "links": [
             {
-                "label": "Features",
-                "altText": "Features page",
+                "label": "Malware Report",
+                "altText": "Malware Report",
                 "url": "/",
                 "icon": "arrowRight",
                 "iconPosition": "right",
@@ -37,7 +37,7 @@
         "type": "FooterLinksGroup"
     },
     "secondaryLinks": {
-        "title": "Company",
+        "title": "Tools",
         "links": [
             {
                 "label": "Careers",
@@ -61,12 +61,6 @@
     },
     "socialLinks": [
         {
-            "altText": "GitHub link",
-            "url": "https://github.com/netlify",
-            "icon": "github",
-            "type": "Social"
-        },
-        {
             "altText": "Twitter link",
             "url": "https://x.com/HackrAnalytics",
             "icon": "twitter",
@@ -74,36 +68,23 @@
         },
         {
             "altText": "LinkedIn link",
-            "url": "https://www.linkedin.com/company/netlify",
+            "url": "https://www.linkedin.com/company/hacker-analytics/",
             "icon": "linkedin",
-            "type": "Social"
-        },
-        {
-            "altText": "Email link",
-            "url": "/",
-            "icon": "mail",
             "type": "Social"
         }
     ],
     "legalLinks": [
         {
-            "label": "Terms",
+            "label": "Built by Zack El Metennani",
             "url": "/",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
-            "type": "Link"
-        },
-        {
-            "label": "Privacy",
-            "url": "/",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
+            "type": "Link",
+            "altText": "Author"
         }
     ],
-    "copyrightText": "Powered by [Netlify](https://www.netlify.com/)\n",
+    "copyrightText": "© 2025 Hacker Analyytics. All rights reserved.\n",
     "colors": "bg-dark-fg-light",
     "type": "Footer"
 }
