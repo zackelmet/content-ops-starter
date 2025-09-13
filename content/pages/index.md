@@ -4,7 +4,7 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: Unblock your team boost your time to production
+      text: The latest threat intelligence
       color: text-dark
       type: TitleBlock
     subtitle: Subtitle goes here
@@ -41,7 +41,7 @@ sections:
       color: text-primary
       type: Badge
     elementId: ''
-    colors: bg-light-fg-dark
+    colors: bg-neutral-fg-dark
     styles:
       self:
         alignItems: center
@@ -51,28 +51,36 @@ sections:
           - pl-16
           - pb-16
           - pr-16
+    backgroundImage:
+      type: BackgroundImage
+      altText: altText of the image
+      backgroundSize: auto
+      backgroundPosition: center
+      backgroundRepeat: no-repeat
+      opacity: 100
+      url: /images/Gradient.png
   - subtitle: Intelligently Sourced
     images:
       - url: /images/TOR1.png
-        altText: Empathy logo
+        altText: TOR logo
         type: ImageBlock
-      - url: /images/wellster-logo.svg
-        altText: Wellster logo
+      - url: /images/MITRE.png
+        altText: MITRE logo
         type: ImageBlock
-      - url: /images/vise-logo.svg
-        altText: Vise logo
+      - url: /images/US-cert.jpeg
+        altText: US-CERT logo
         type: ImageBlock
-      - url: /images/telus-logo.svg
-        altText: Telus logo
+      - url: /images/NIST.png
+        altText: NIST logo
         type: ImageBlock
-      - url: /images/contenful-logo.svg
-        altText: Contentful logo
+      - url: /images/CISA1.png
+        altText: CISA logo
         type: ImageBlock
-      - url: /images/sanity-logo.svg
-        altText: Sanity logo
+      - url: /images/OTX.png
+        altText: OTX logo
         type: ImageBlock
-      - url: /images/rangle-logo.svg
-        altText: Rangle logo
+      - url: /images/ENISA.png
+        altText: ENISA logo
         type: ImageBlock
     motion: move-to-left
     colors: bg-light-fg-dark
@@ -245,9 +253,9 @@ sections:
     colors: bg-light-fg-dark
     type: GenericSection
 seo:
-  metaTitle: Home - Demo site
-  metaDescription: This demo site is built with Netlify Create.
-  socialImage: /images/main-hero.jpg
+  metaTitle: Hacker Analytics - Deep Cyber Threat Intel
+  metaDescription: Hacker Analytics - Deep Cyber Threat Intel
+  socialImage: /images/Hacker Analytics.png
   type: Seo
 type: PageLayout
 ---

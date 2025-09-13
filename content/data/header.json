@@ -1,7 +1,7 @@
 {
     "logo": {
-        "url": "/images/logo-dark.svg",
-        "altText": "Logo dark",
+        "url": "/images/Untitled (100 x 100 px).png",
+        "altText": "Logo",
         "styles": {
             "self": {
                 "margin": [
@@ -45,13 +45,45 @@
             "type": "SubNav"
         },
         {
-            "label": "Blog",
-            "altText": "Blog",
-            "url": "/blog",
-            "icon": "arrowRight",
-            "iconPosition": "right",
-            "style": "secondary",
-            "type": "Link"
+            "type": "SubNav",
+            "label": "Blogs",
+            "altText": "Dropdown",
+            "links": [
+                {
+                    "type": "Link",
+                    "label": "Malware Report",
+                    "altText": "Malware Report",
+                    "url": "/",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                },
+                {
+                    "type": "Link",
+                    "label": "Dropdown item",
+                    "altText": "",
+                    "url": "/",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                },
+                {
+                    "type": "Link",
+                    "label": "Dropdown item",
+                    "altText": "",
+                    "url": "/",
+                    "showIcon": false,
+                    "icon": "arrowRight",
+                    "iconPosition": "right",
+                    "style": "secondary",
+                    "elementId": ""
+                }
+            ],
+            "labelStyle": "secondary"
         },
         {
             "type": "Link",
@@ -85,6 +117,6 @@
         }
     ],
     "variant": "logo-left-primary-nav-centered",
-    "colors": "bg-light-fg-dark",
+    "colors": "bg-dark-fg-light",
     "type": "Header"
 }
