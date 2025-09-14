@@ -1,10 +1,10 @@
 ---
 title: Amass
-slug: amass
+slug: red-team-tools/amass
 date: '2025-08-27'
 excerpt: Subdomain and asset discovery
 featuredImage:
-  url: undefined
+  url: /images/img-placeholder.svg
   altText: Amass
   styles:
     self:

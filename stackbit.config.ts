@@ -5,7 +5,7 @@ import { allModels } from 'sources/local/models';
 
 const gitContentSource = new GitContentSource({
     rootPath: __dirname,
-    contentDirs: ['content/pages', 'content/pages/blog', 'content/intel', 'content/data'],
+    contentDirs: ['content/pages', 'content/pages/blog', 'content/pages/blog/*', 'content/intel', 'content/data'],
     models: Object.values(allModels),
     assetsConfig: {
         referenceType: 'static',
@@ -27,7 +27,7 @@ export default defineStackbitConfig({
     },
     modelExtensions: [
         { name: 'Page', type: 'page', urlPath: '/{slug}' },
-        { name: 'BlogPost', type: 'page', urlPath: '/blog/{slug}' },
+        { name: 'BlogPost', type: 'page', urlPath: '/blog/{category}/{slug}' },
         { name: 'CTIItem', type: 'page', urlPath: '/intel/{slug}' }
     ]
     // No custom siteMap property: use default sitemap behavior
