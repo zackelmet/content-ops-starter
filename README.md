@@ -25,6 +25,3 @@ Hacker Analytics is a CTI (Cyber Threat Intelligence) voice and research organiz
 - Community-driven collaboration
 - Commitment to open standards and responsible disclosure
 
----
-
-Hacker Analytics is building the future of CTI: a trusted voice, a research hub, and a collaborative community for the next generation of cyber defenders.
