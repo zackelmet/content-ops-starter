@@ -32,10 +32,8 @@ sections:
         elementId: ''
         type: Link
     media:
-      url: /images/main-hero.svg
-      altText: Unblock your team boost your time to production preview
       elementId: ''
-      type: ImageBlock
+      type: RadarBlock
     badge:
       label: This is a badge
       color: text-primary
@@ -75,7 +73,7 @@ sections:
         altText: ENISA logo
         type: ImageBlock
     motion: move-to-left
-    colors: bg-light-fg-dark
+    colors: bg-gray-100-fg-dark
     styles:
       self:
         justifyContent: center
