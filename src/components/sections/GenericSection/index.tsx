@@ -27,8 +27,8 @@ export default function GenericSection(props) {
             styles={styles?.self}
             {...getDataAttrs(props)}
         >
-            {/* Animated background only for hero section */}
-            <AnimatedParticlesBackground />
+            {/* Animated background only when not explicitly disabled in content */}
+            {styles?.self?.enableAnimatedBackground === false ? null : <AnimatedParticlesBackground />}
             <div
                 className={classNames(
                     'w-full',

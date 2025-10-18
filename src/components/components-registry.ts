@@ -45,6 +45,7 @@ const components = {
     GenericSection: dynamic(() => import('./sections/GenericSection')),
     ImageBlock: dynamic(() => import('./blocks/ImageBlock')),
     RadarBlock: dynamic(() => import('./blocks/RadarBlock')),
+    SignupBox: dynamic(() => import('./blocks/SignupBox')),
     ImageGallerySection: dynamic(() => import('./sections/ImageGallerySection')),
     PostFeedSection: dynamic(() => import('./sections/PostFeedSection')),
     PricingSection: dynamic(() => import('./sections/PricingSection')),

@@ -33,7 +33,7 @@ sections:
         type: Link
     media:
       elementId: ''
-      type: RadarBlock
+      type: SignupBox
     badge:
       label: This is a badge
       color: text-primary
