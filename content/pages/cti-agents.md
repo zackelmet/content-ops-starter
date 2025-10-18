@@ -1,15 +1,15 @@
 ---
-title: Pricing
-slug: pricing
+title: CTI-Agents
+slug: CTI-Agents
 sections:
   - title:
-      text: Flexible Pricing
+      text: Flexible CTI-Agents
       color: text-dark
       styles:
         self:
           textAlign: center
       type: TitleBlock
-    subtitle: This is the subtitle for the pricing section
+    subtitle: This is the subtitle for the CTI-Agents section
     plans:
       - title: Developers
         price: Free
@@ -24,7 +24,7 @@ sections:
           - Feature four
         image:
           url: /images/abstract-feature1.svg
-          altText: Pricing plan 1
+          altText: CTI-Agents plan 1
           type: ImageBlock
         actions:
           - label: Try for free
@@ -42,7 +42,7 @@ sections:
               - pl-6
               - pr-6
             borderRadius: large
-        type: PricingPlan
+        type: CTI-AgentsPlan
       - title: Professional
         price: $99
         details: per month
@@ -56,7 +56,7 @@ sections:
           - Feature four
         image:
           url: /images/abstract-feature2.svg
-          altText: Pricing plan 2
+          altText: CTI-Agents plan 2
           type: ImageBlock
         actions:
           - label: Try for free
@@ -74,7 +74,7 @@ sections:
               - pl-6
               - pr-6
             borderRadius: large
-        type: PricingPlan
+        type: CTI-AgentsPlan
       - title: Enterprise
         price: Custom
         details: per month
@@ -89,7 +89,7 @@ sections:
           - Feature five
         image:
           url: /images/abstract-feature3.svg
-          altText: Pricing plan 3
+          altText: CTI-Agents plan 3
           type: ImageBlock
         actions:
           - label: Contact us
@@ -107,17 +107,17 @@ sections:
               - pl-6
               - pr-6
             borderRadius: large
-        type: PricingPlan
+        type: CTI-AgentsPlan
     colors: bg-light-fg-dark
     styles:
       self:
         justifyContent: center
       subtitle:
         textAlign: center
-    type: PricingSection
+    type: CTI-AgentsSection
 seo:
-  metaTitle: Pricing - Demo site
-  metaDescription: This is the pricing page built with Netlify Create.
+  metaTitle: CTI-Agents - Demo site
+  metaDescription: This is the CTI-Agents page built with Netlify Create.
   socialImage: /images/main-hero.jpg
   type: Seo
 type: PageLayout

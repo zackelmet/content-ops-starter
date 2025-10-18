@@ -87,9 +87,9 @@
         },
         {
             "type": "Link",
-            "label": "Pricing",
+            "label": "CTI Agents",
             "altText": "",
-            "url": "/pricing",
+            "url": "/cti-agents",
             "showIcon": false,
             "icon": "arrowRight",
             "iconPosition": "right",
