@@ -7,6 +7,14 @@
     font-display: swap;
 }
 
+/* FORCE: apply the site's "light" text color everywhere (overrides component utilities) */
+/* Use with caution — this will make all text the same light-blue color */
+html,
+body,
+body * {
+    color: #00fed9 !important;
+}
+
 @font-face {
     font-family: 'Vipnagorgialla';
     src: url('/fonts/Vipnagorgialla Bd.woff2') format('woff2'),
@@ -25,7 +33,7 @@
 
 @layer base {
     body {
-        @apply text-base font-sans;
+        @apply text-base font-sans text-light;
         background-color: #0a0a23;
         /* almost black, dark blue */
     }
