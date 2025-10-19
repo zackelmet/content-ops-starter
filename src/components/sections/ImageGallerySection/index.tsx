@@ -79,7 +79,13 @@ function ImageGalleryStaticGrid({ images = [], hasTopMargin, justifyContent = 'f
             {...(hasAnnotations && { 'data-sb-field-path': '.images' })}
         >
             {images.map((image, index) => (
-                <ImageBlock key={index} {...image} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
+                <ImageBlock
+                    key={index}
+                    className="mx-4 inline-flex items-center justify-center rounded-full w-24 sm:w-28 h-24 sm:h-28 overflow-hidden bg-gray-50 border-2 border-white/10"
+                    imageClassName="max-w-full max-h-full"
+                    {...image}
+                    {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })}
+                />
             ))}
         </div>
     );
@@ -130,12 +136,24 @@ function ImageGalleryAnimatedGrid({ images = [], motion, hasTopMargin, hasAnnota
                     >
                         <div className="sb-image-strip-content flex justify-around" {...(hasAnnotations && { 'data-sb-field-path': '.images' })}>
                             {images.map((image, index) => (
-                                <ImageBlock key={index} {...image} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
+                                <ImageBlock
+                                    key={index}
+                                    className="mx-4 inline-flex items-center justify-center rounded-full w-24 sm:w-28 h-24 sm:h-28 overflow-hidden bg-gray-50 border-2 border-white/10"
+                                    imageClassName="max-w-full max-h-full"
+                                    {...image}
+                                    {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })}
+                                />
                             ))}
                         </div>
                         <div className="sb-image-strip-content flex justify-around" {...(hasAnnotations && { 'data-sb-field-path': '.images' })}>
                             {images.map((image, index) => (
-                                <ImageBlock key={index} {...image} {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })} />
+                                <ImageBlock
+                                    key={index}
+                                    className="mx-4 inline-flex items-center justify-center rounded-full w-24 sm:w-28 h-24 sm:h-28 overflow-hidden bg-gray-50 border-2 border-white/10"
+                                    imageClassName="max-w-full max-h-full"
+                                    {...image}
+                                    {...(hasAnnotations && { 'data-sb-field-path': `.${index}` })}
+                                />
                             ))}
                         </div>
                     </div>

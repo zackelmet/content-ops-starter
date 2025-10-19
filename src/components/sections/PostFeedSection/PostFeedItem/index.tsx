@@ -31,18 +31,23 @@ export default function PostFeedItem(props) {
                 'sb-card',
                 'block',
                 post.colors ?? 'bg-light-fg-dark',
+                // Floating card base styles (only applied if author hasn't set explicit padding/border radius)
                 post.styles?.self?.margin ? mapStyles({ margin: post.styles?.self?.margin }) : undefined,
-                post.styles?.self?.padding ? mapStyles({ padding: post.styles?.self?.padding }) : undefined,
+                // Ensure cards have comfortable padding unless content specifies its own padding
+                post.styles?.self?.padding ? mapStyles({ padding: post.styles?.self?.padding }) : 'p-6',
                 post.styles?.self?.borderWidth && post.styles?.self?.borderWidth !== 0 && post.styles?.self?.borderStyle !== 'none'
                     ? mapStyles({
-                          borderWidth: post.styles?.self?.borderWidth,
-                          borderStyle: post.styles?.self?.borderStyle,
-                          borderColor: post.styles?.self?.borderColor ?? 'border-primary'
-                      })
+                        borderWidth: post.styles?.self?.borderWidth,
+                        borderStyle: post.styles?.self?.borderStyle,
+                        borderColor: post.styles?.self?.borderColor ?? 'border-primary'
+                    })
                     : undefined,
-                post.styles?.self?.borderRadius ? mapStyles({ borderRadius: post.styles?.self?.borderRadius }) : undefined,
+                // Prefer author's radius; otherwise give a rounded-lg card
+                post.styles?.self?.borderRadius ? mapStyles({ borderRadius: post.styles?.self?.borderRadius }) : 'rounded-lg',
                 post.styles?.self?.textAlign ? mapStyles({ textAlign: post.styles?.self?.textAlign }) : undefined,
                 'overflow-hidden',
+                // subtle base shadow; stronger on hover via hover effect mapping
+                'shadow-sm',
                 mapCardHoverStyles(hoverEffect, sectionColors)
             )}
             {...(hasAnnotations && { 'data-sb-object-id': post.__metadata?.id })}
@@ -55,7 +60,7 @@ export default function PostFeedItem(props) {
                             'xs:w-[50%] xs:shrink-0': hasBigThumbnail && (flexDirection === 'row' || flexDirection === 'row-reversed'),
                             'xs:w-[28.4%] xs:shrink-0': !hasBigThumbnail && (flexDirection === 'row' || flexDirection === 'row-reversed')
                         })}
-                        imageClassName="w-full h-full object-cover"
+                        imageClassName="w-full h-full object-cover rounded-md"
                         {...(hasAnnotations && { 'data-sb-field-path': 'featuredImage' })}
                     />
                 )}
