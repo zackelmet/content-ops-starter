@@ -4,14 +4,12 @@ slug: /
 sections:
   - type: GenericSection
     title:
-      text: The latest threat intelligence
+      text: Real attacks. Real tools. 
       color: text-dark
       type: TitleBlock
-    subtitle: Subtitle goes here
+    subtitle: 
     text: >
-      A Netlify Create website is a git repo that you own. Every code commit is
-      instantly reflected in the visual editor and since every visual edit is a
-      git commit, git workflows and collaboration just work.
+      Stay ahead of real-world cyber threats in 5 minutes a week. Join thousands of IT pros getting the latest threat intel, attacker tools, and cybercrime insights. Free, every Sunday.
     actions:
       - label: Get started
         altText: ''
@@ -35,7 +33,7 @@ sections:
       elementId: ''
       type: SignupBox
     badge:
-      label: This is a badge
+      label: Weekly Cyber Threat Intel Brief
       color: text-primary
       type: Badge
     elementId: ''
