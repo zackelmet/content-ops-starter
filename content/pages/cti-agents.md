@@ -1,6 +1,6 @@
 ---
 title: CTI-Agents
-slug: CTI-Agents
+slug: cti-agents
 sections:
   - title:
       text: Flexible CTI-Agents
