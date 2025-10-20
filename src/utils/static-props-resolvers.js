@@ -72,7 +72,12 @@ const StaticPropsResolvers = {
         };
     },
     RecentPostsSection: (props, data) => {
-        let allPosts = getAllPostsSorted(data.objects);
+        let allPosts;
+        if (props.category) {
+            allPosts = getAllCategoryPostsSorted(data.objects, props.category);
+        } else {
+            allPosts = getAllPostsSorted(data.objects);
+        }
         if (!process.env.stackbitPreview) {
             allPosts = allPosts.filter(isPublished);
         }
