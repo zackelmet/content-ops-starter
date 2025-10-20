@@ -53,7 +53,7 @@
                     "type": "Link",
                     "label": "Malware Report",
                     "altText": "Malware Report",
-                    "url": "/",
+                    "url": "/malware-report",
                     "showIcon": false,
                     "icon": "arrowRight",
                     "iconPosition": "right",
