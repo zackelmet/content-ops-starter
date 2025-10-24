@@ -44,7 +44,7 @@
         },
         {
             "type": "Link",
-            "label": "CTI Agents",
+            "label": "Cyber Threat Intelligence",
             "altText": "",
             "url": "/cyber-threat-intelligence",
             "showIcon": false,
@@ -56,7 +56,7 @@
     ],
     "secondaryLinks": [
         {
-            "label": "Join",
+            "label": "Get a CTI Agent",
             "altText": "Sign up",
             "url": "https://app.netlify.com/signup",
             "icon": "arrowRight",
@@ -65,7 +65,7 @@
             "type": "Button"
         },
         {
-            "label": "Log in",
+            "label": "Contact Us",
             "url": "/",
             "icon": "arrowRight",
             "iconPosition": "right",
