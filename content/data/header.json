@@ -13,38 +13,6 @@
     },
     "primaryLinks": [
         {
-            "label": "Tools",
-            "altText": "Dropdown",
-            "links": [
-                {
-                    "label": "Dropdown item",
-                    "url": "/",
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "type": "Link"
-                },
-                {
-                    "label": "Dropdown item",
-                    "url": "/",
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "type": "Link"
-                },
-                {
-                    "label": "Dropdown item",
-                    "url": "/",
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "type": "Link"
-                }
-            ],
-            "labelStyle": "secondary",
-            "type": "SubNav"
-        },
-        {
             "type": "SubNav",
             "label": "Blogs",
             "altText": "Dropdown",
@@ -62,20 +30,9 @@
                 },
                 {
                     "type": "Link",
-                    "label": "Dropdown item",
-                    "altText": "",
-                    "url": "/",
-                    "showIcon": false,
-                    "icon": "arrowRight",
-                    "iconPosition": "right",
-                    "style": "secondary",
-                    "elementId": ""
-                },
-                {
-                    "type": "Link",
-                    "label": "Dropdown item",
-                    "altText": "",
-                    "url": "/",
+                    "label": "Red Team Tools",
+                    "altText": "Red Team Tools",
+                    "url": "/redteam-tools",
                     "showIcon": false,
                     "icon": "arrowRight",
                     "iconPosition": "right",
@@ -90,6 +47,17 @@
             "label": "CTI Agents",
             "altText": "",
             "url": "/cti-agents",
+            "showIcon": false,
+            "icon": "arrowRight",
+            "iconPosition": "right",
+            "style": "secondary",
+            "elementId": ""
+        },
+        {
+            "type": "Link",
+            "label": "AI Pentesting",
+            "altText": "",
+            "url": "/ai-pentesting",
             "showIcon": false,
             "icon": "arrowRight",
             "iconPosition": "right",
