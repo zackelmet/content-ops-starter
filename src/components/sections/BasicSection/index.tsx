@@ -14,7 +14,12 @@ export default function BasicSection(props) {
     const flexDirection = styles?.self?.flexDirection ?? 'row';
     const alignItems = styles?.self?.alignItems ?? 'flex-start';
     const hasTextContent = !!(badge?.url || title?.text || subtitle || text || actions.length > 0);
-    const hasMedia = !!(media && (media?.url || (media?.fields ?? []).length > 0));
+    const hasMedia = !!(
+        media &&
+        (media?.url || (media?.fields ?? []).length > 0 || media?.type || media?.__metadata?.modelName)
+    );
+    const mediaInline = !!(media && media?.styles?.self?.placement === 'inline');
+    const hasSeparateMedia = hasMedia && !mediaInline;
     const hasXDirection = flexDirection === 'row' || flexDirection === 'row-reverse';
 
     return (
@@ -30,11 +35,11 @@ export default function BasicSection(props) {
                 className={classNames(
                     'w-full',
                     'flex',
-                    mapFlexDirectionStyles(flexDirection, hasTextContent, hasMedia),
+                    mapFlexDirectionStyles(flexDirection, hasTextContent, hasSeparateMedia),
                     /* handle horizontal positioning of content on small screens or when direction is col or col-reverse, mapping justifyContent to alignItems instead since it's a flex column */
                     mapStyles({ alignItems: styles?.self?.justifyContent ?? 'flex-start' }),
                     /* handle vertical positioning of content on large screens if it's a two col layout */
-                    hasMedia && hasTextContent && hasXDirection ? mapAlignItemsStyles(alignItems) : undefined,
+                    hasSeparateMedia && hasTextContent && hasXDirection ? mapAlignItemsStyles(alignItems) : undefined,
                     'gap-x-12',
                     'gap-y-16'
                 )}
@@ -42,7 +47,7 @@ export default function BasicSection(props) {
                 {hasTextContent && (
                     <div
                         className={classNames('w-full', 'max-w-sectionBody', {
-                            'lg:max-w-[27.5rem]': hasMedia && hasXDirection
+                            'lg:max-w-[27.5rem]': hasSeparateMedia && hasXDirection
                         })}
                     >
                         {badge && <Badge {...badge} {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
@@ -74,6 +79,12 @@ export default function BasicSection(props) {
                                 {text}
                             </Markdown>
                         )}
+                        {/* Render inline media (centered) between text and actions when requested in content */}
+                        {mediaInline && (
+                            <div className={classNames('flex', 'justify-center', 'items-center', 'my-4')}>
+                                <Media media={media} hasAnnotations={enableAnnotations} />
+                            </div>
+                        )}
                         {actions.length > 0 && (
                             <div
                                 className={classNames(
@@ -100,12 +111,12 @@ export default function BasicSection(props) {
                         )}
                     </div>
                 )}
-                {hasMedia && (
+                {hasSeparateMedia && (
                     <div
                         className={classNames('w-full', 'flex', mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }), {
-                            'max-w-sectionBody': media.__metadata.modelName === 'FormBlock',
+                            'max-w-sectionBody': media.__metadata?.modelName === 'FormBlock',
                             'lg:w-[57.5%] lg:shrink-0': hasTextContent && hasXDirection,
-                            'lg:mt-10': badge?.label && media.__metadata.modelName === 'FormBlock' && hasXDirection
+                            'lg:mt-10': badge?.label && media.__metadata?.modelName === 'FormBlock' && hasXDirection
                         })}
                     >
                         <Media media={media} hasAnnotations={enableAnnotations} />
@@ -117,9 +128,9 @@ export default function BasicSection(props) {
 }
 
 function Media({ media, hasAnnotations }: { media: any; hasAnnotations: boolean }) {
-    const modelName = media.__metadata.modelName;
+    const modelName = media?.__metadata?.modelName ?? media?.type;
     if (!modelName) {
-        throw new Error(`basic section media does not have the 'modelName' property`);
+        throw new Error(`basic section media does not have a 'modelName' or 'type' property`);
     }
     const MediaComponent = getComponent(modelName);
     if (!MediaComponent) {

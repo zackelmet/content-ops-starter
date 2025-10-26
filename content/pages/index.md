@@ -10,25 +10,7 @@ sections:
     subtitle: 
     text: >
       Stay ahead of real-world cyber threats in 5 minutes a week. Join thousands of IT pros getting the latest threat intel, attacker tools, and cybercrime insights. Free, every Sunday.
-    actions:
-      - label: Get started
-        altText: ''
-        url: /
-        showIcon: false
-        icon: arrowRight
-        iconPosition: right
-        style: secondary
-        elementId: ''
-        type: Button
-      - label: See Tutorials
-        altText: ''
-        url: /
-        showIcon: true
-        icon: arrowRight
-        iconPosition: right
-        style: primary
-        elementId: ''
-        type: Link
+    # actions removed - replaced by inline signup box media on the right column
     media:
       elementId: ''
       type: SignupBox
