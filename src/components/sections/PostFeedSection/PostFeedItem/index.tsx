@@ -34,7 +34,7 @@ export default function PostFeedItem(props) {
                 // Floating card base styles (only applied if author hasn't set explicit padding/border radius)
                 post.styles?.self?.margin ? mapStyles({ margin: post.styles?.self?.margin }) : undefined,
                 // Ensure cards have comfortable padding unless content specifies its own padding
-                post.styles?.self?.padding ? mapStyles({ padding: post.styles?.self?.padding }) : 'p-6',
+                post.styles?.self?.padding ? mapStyles({ padding: post.styles?.self?.padding }) : 'p-4',
                 post.styles?.self?.borderWidth && post.styles?.self?.borderWidth !== 0 && post.styles?.self?.borderStyle !== 'none'
                     ? mapStyles({
                         borderWidth: post.styles?.self?.borderWidth,
@@ -52,7 +52,7 @@ export default function PostFeedItem(props) {
             )}
             {...(hasAnnotations && { 'data-sb-object-id': post.__metadata?.id })}
         >
-            <div className={classNames('w-full', 'flex', mapFlexDirectionStyles(flexDirection, hasThumbnail), 'gap-6')}>
+            <div className={classNames('w-full', 'flex', mapFlexDirectionStyles(flexDirection, hasThumbnail), 'gap-4')}>
                 {hasThumbnail && (
                     <ImageBlock
                         {...post.featuredImage}
@@ -82,11 +82,11 @@ export default function PostFeedItem(props) {
                         showDate={showDate}
                         date={post.date}
                         author={post.author}
-                        className="mt-3"
+                        className="mt-2"
                         hasAnnotations={hasAnnotations}
                     />
                     {showExcerpt && post.excerpt && (
-                        <p className="mt-3" {...(hasAnnotations && { 'data-sb-field-path': 'excerpt' })}>
+                        <p className="mt-2" {...(hasAnnotations && { 'data-sb-field-path': 'excerpt' })}>
                             {post.excerpt}
                         </p>
                     )}

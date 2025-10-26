@@ -23,7 +23,8 @@ module.exports = {
                 primary: themeStyle.primary
             },
             fontFamily: {
-                sans: ['Vipnagorgialla', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                // Use the locally added ShareTechMono font as the primary sans on the site
+                sans: ['ShareTechMono', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                 serif: ['Roboto Slab', 'serif']
             },
             gridTemplateColumns: {
