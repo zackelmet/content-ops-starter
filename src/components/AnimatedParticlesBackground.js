@@ -34,7 +34,8 @@ export default function AnimatedParticlesBackground() {
       positions[i * 3 + 2] = (Math.random() - 0.5) * 800;
     }
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const material = new THREE.PointsMaterial({ color: 0x00ffff, size: 4 });
+  // Use a neutral grey color for particles (instead of cyan) and add slight transparency
+  const material = new THREE.PointsMaterial({ color: 0x9ca3af, size: 4, transparent: true, opacity: 0.65 });
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
