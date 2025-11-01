@@ -50,7 +50,7 @@ sections:
         showIcon: false
 seo:
   metaTitle: Request a quote - Demo site
-  metaDescription: This is the Request a quote page built with Netlify Create.
+  metaDescription: "Request a custom quote for CTI compliance, audit readiness, and security automation. Get tailored solutions for your environment, frameworks, and business needs from Hacker Analytics."
   socialImage: /images/main-hero.jpg
   type: Seo
 type: PageLayout

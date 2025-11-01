@@ -62,7 +62,7 @@ sections:
         justifyContent: center
 seo:
   metaTitle: red team tools - Hacker Analytics
-  metaDescription: Weekly catalog of attacker tools and offensive techniques.
+  metaDescription: "Discover the latest red team tools, offensive security techniques, and expert insights. Equip your team with the resources to test, defend, and improve your cyber resilience."
   socialImage: /images/main-hero.jpg
   type: Seo
 type: PageLayout

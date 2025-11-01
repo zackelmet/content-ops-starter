@@ -157,7 +157,7 @@ sections:
       justifyContent: center
 seo:
   metaTitle: Hacker Analytics - Deep Cyber Threat Intel
-  metaDescription: Hacker Analytics - Deep Cyber Threat Intel
+  metaDescription: "Hacker Analytics delivers advanced cyber threat intelligence, compliance automation, and real-time monitoring for modern organizations. Protect your business, meet regulatory requirements, and stay ahead of emerging threats."
   socialImage: /images/Hacker Analytics.png
   type: Seo
 type: PageLayout
