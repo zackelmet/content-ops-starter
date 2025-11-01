@@ -4,57 +4,59 @@
         "altText": "Logo light",
         "type": "ImageBlock"
     },
-    "text": "A description of your brand",
+    "text": "Stay compliant. Stay protected. Stay ahead.",
     "primaryLinks": {
         "title": "Blogs",
         "links": [
             {
+                "type": "Link",
                 "label": "Malware Report",
                 "altText": "Malware Report",
-                "url": "/",
+                "url": "/malware-report",
+                "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
-                "type": "Link"
+                "elementId": ""
             },
             {
-                "label": "Pricing",
-                "url": "/pricing",
+                "type": "Link",
+                "label": "Red Team Tools",
+                "altText": "Red Team Tools",
+                "url": "/redteam-tools",
+                "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
-                "type": "Link"
-            },
-            {
-                "label": "Documentation",
-                "url": "/",
-                "icon": "arrowRight",
-                "iconPosition": "right",
-                "style": "secondary",
-                "type": "Link"
+                "elementId": ""
             }
         ],
         "type": "FooterLinksGroup"
     },
     "secondaryLinks": {
-        "title": "Tools",
+        "title": "Pages",
         "links": [
             {
-                "label": "Careers",
-                "altText": "careers page",
-                "url": "/careers",
+                "type": "Link",
+                "label": "Cyber Threat Intel",
+                "altText": "",
+                "url": "/cyber-threat-intelligence",
+                "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
-                "type": "Link"
+                "elementId": ""
             },
             {
-                "label": "Blog",
-                "url": "/blog",
+                "type": "Link",
+                "label": "Contact Us",
+                "altText": "",
+                "url": "/contact-us",
+                "showIcon": false,
                 "icon": "arrowRight",
                 "iconPosition": "right",
                 "style": "secondary",
-                "type": "Link"
+                "elementId": ""
             }
         ],
         "type": "FooterLinksGroup"

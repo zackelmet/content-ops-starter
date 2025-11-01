@@ -422,3 +422,138 @@ body * {
         }
     }
 }
+
+/* Icons and small automation helpers
+   - Add lightweight inline SVG icons available via classes: .icon-shield, .icon-check, .icon-doc
+   - A .process-steps / .process-step structure will receive automatic numbering (circular badges)
+     and a decorative arrow between steps on larger screens.
+   Usage:
+     - Add an icon to any inline element like: <div class="icon icon-shield">Compliance text</div>
+     - Wrap steps like:
+         <div class="process-steps">
+           <div class="process-step">Detect threats</div>
+           <div class="process-step">Triage</div>
+           <div class="process-step">Report</div>
+         </div>
+*/
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+/* Shield icon (useful for "compliance") */
+.icon-shield::before {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23374151' d='M12 2l7 3v5c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z'/></svg>");
+}
+
+/* Check / verified icon */
+.icon-check::before {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23374151' d='M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2 18.6 6.8z'/></svg>");
+}
+
+/* Document / evidence icon */
+.icon-doc::before {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23374151' d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM13 3.5L18.5 9H13V3.5zM8 12h8v2H8v-2zm0 4h8v2H8v-2z'/></svg>");
+}
+
+/* Process steps: automatic numbering and connectors */
+.process-steps {
+    counter-reset: process-step;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    counter-increment: process-step;
+    position: relative;
+    padding: 1rem 1.25rem 1rem 3.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.75rem;
+    min-width: 12rem;
+}
+
+.process-step::before {
+    content: counter(process-step);
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #00fed9;
+    /* accent */
+    color: #0a0a23;
+    /* dark inner */
+    font-weight: 700;
+}
+
+/* Decorative arrow between steps on large screens */
+@media (min-width: 1024px) {
+    .process-steps .process-step+.process-step::after {
+        content: "";
+        position: absolute;
+        left: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23000' fill-opacity='0.08' d='M2 12h16M12 6l6 6-6 6'/></svg>");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform-origin: center;
+    }
+}
+
+
+/* Previously there was a targeted override for #quote-form to force grey text for readability.
+   That override has been removed so the site-wide cyan color will apply everywhere again.
+   If you want a per-form readable override in the future, add `styles.self.textCard: true` to
+   the section frontmatter or create a scoped class instead of using !important selectors. */
+
+/* Micro-interactions: small hover lift and fade-in utility */
+@layer components {
+    .card-hover {
+        @apply transition-transform transition-shadow duration-200;
+    }
+
+    .card-hover:hover {
+        @apply -translate-y-1 shadow-lg;
+    }
+
+    .fade-in {
+        animation: fadeIn 420ms ease both;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

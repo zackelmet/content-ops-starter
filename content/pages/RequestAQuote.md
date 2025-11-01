@@ -1,6 +1,6 @@
 ---
-title: Careers
-slug: careers
+title: Request a quote
+slug: Request a quote
 sections:
   - title:
       text: A team that works closely together
@@ -159,8 +159,8 @@ sections:
         textAlign: center
     type: FeaturedItemsSection
 seo:
-  metaTitle: Careers - Demo site
-  metaDescription: This is the careers page built with Netlify Create.
+  metaTitle: Request a quote - Demo site
+  metaDescription: This is the Request a quote page built with Netlify Create.
   socialImage: /images/main-hero.jpg
   type: Seo
 type: PageLayout
