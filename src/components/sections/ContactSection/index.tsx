@@ -20,13 +20,13 @@ export default function ContactSection(props) {
             styles={styles?.self}
             {...getDataAttrs(props)}
         >
-            <div className={classNames('w-full', 'flex', 'flex-col', 'items-start', 'gap-y-8')}>
+            <div className={classNames('w-full', 'grid', 'grid-cols-1', 'md:grid-cols-2', 'gap-8', 'items-start')}>
                 <div className={classNames('w-full', 'max-w-sectionBody', 'text-left', 'text-light')}>
                     {badge && <Badge {...badge} {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
                     {title && (
                         <TitleBlock
                             {...title}
-                            className={classNames({ 'mt-4': badge?.label })}
+                            className={classNames('pt-2', 'pb-2', 'mb-4', { 'mt-4': badge?.label })}
                             {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
                         />
                     )}
@@ -36,15 +36,30 @@ export default function ContactSection(props) {
                         </p>
                     )}
                     {text && (
-                        <div className="mt-6 sb-markdown sm:text-lg" {...(enableAnnotations && { 'data-sb-field-path': '.text' })}>
-                            {text}
-                        </div>
+                        <a
+                            href="https://www.linkedin.com/company/hacker-analytics/"
+                            target="_blank"
+                            rel="noopener"
+                            className="block mt-12 ml-0 max-w-xs bg-blue-900 border border-blue-900 rounded-xl shadow px-5 py-4 text-left text-lg font-semibold text-white hover:bg-blue-800 transition-all flex items-center gap-2 cursor-pointer"
+                            aria-label="Chat with us directly on LinkedIn"
+                        >
+                            Or chat with us directly on Linkedin
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={28}
+                                height={28}
+                                viewBox="0 0 24 24"
+                                className="ml-2"
+                            >
+                                <path fill="#60a5fa" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.838-1.563 3.036 0 3.6 2.001 3.6 4.601v5.595z" />
+                            </svg>
+                        </a>
                     )}
                 </div>
 
-                {/* Single outline box containing the form - intentionally minimal background so it's a single border */}
+                {/* Single outline box containing the form - on wide screens the form sits right of the description */}
                 {media && (
-                    <div className="w-full max-w-sectionBody">
+                    <div className="w-full">
                         <div className="w-full border border-white/6 rounded-lg p-6">
                             <ContactMedia media={media} hasAnnotations={enableAnnotations} />
                         </div>

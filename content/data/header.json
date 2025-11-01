@@ -68,8 +68,8 @@
     "secondaryLinks": [
         {
             "label": "Contact Us",
-            "altText": "Sign up",
-            "url": "https://app.netlify.com/signup",
+            "altText": "Contact section",
+            "url": "/#contact-section",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",
@@ -77,7 +77,7 @@
         },
         {
             "label": "Get a CTI Agent",
-            "url": "/",
+            "url": "/contact",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "primary",
