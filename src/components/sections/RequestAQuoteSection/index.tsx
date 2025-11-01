@@ -42,7 +42,13 @@ export default function RequestAQuoteSection(props) {
                     <div className="w-full border border-white/6 rounded-lg p-6">
                         <h2 className="text-xl font-bold text-blue-900 mb-2">{form.title}</h2>
                         <p className="text-base text-gray-700 mb-4">{form.description}</p>
-                        <form className="grid gap-4">
+                        <form className="grid gap-4" data-netlify="true" name="request-quote" data-netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="request-quote" />
+                            <p className="hidden">
+                                <label>
+                                    Don’t fill this out if you’re human: <input name="bot-field" />
+                                </label>
+                            </p>
                             {form.fields && form.fields.map((field, idx) => (
                                 <div key={idx} className="flex flex-col">
                                     <label className="font-semibold text-blue-900 mb-1" htmlFor={field.name}>{field.label}{field.isRequired ? ' *' : ''}</label>
