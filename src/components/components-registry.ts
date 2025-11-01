@@ -45,6 +45,7 @@ const components = {
     GenericSection: dynamic(() => import('./sections/GenericSection')),
     BasicSection: dynamic(() => import('./sections/BasicSection')),
     ContactSection: dynamic(() => import('./sections/ContactSection')),
+    RequestAQuoteSection: dynamic(() => import('./sections/RequestAQuoteSection')),
     FoxAnimation: dynamic(() => import('./foxanimation')),
     ImageBlock: dynamic(() => import('./blocks/ImageBlock')),
     RadarBlock: dynamic(() => import('./blocks/RadarBlock')),
