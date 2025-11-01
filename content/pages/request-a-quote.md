@@ -7,7 +7,7 @@ sections:
     description: |
       What you get:
     features:
-      - CTI workflows built around your compliance frameworks (PCI, SOC 2, NIST))
+      - CTI workflows built around your compliance frameworks (PCI, SOC 2, NIST)
       - Direct integration with your GRC tools, SIEM, alerting pipelines & logs
       - Continuous, audit-ready evidence, not a one-time snapshot
       - A scalable service that evolves with your business.
