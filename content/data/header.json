@@ -77,7 +77,7 @@
         },
         {
             "label": "Get a CTI Agent",
-            "url": "/contact",
+            "url": "/request-a-quote",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "primary",
