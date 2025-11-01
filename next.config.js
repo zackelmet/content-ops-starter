@@ -1,3 +1,11 @@
+    async rewrites() {
+        return [
+            {
+                source: '/sitemap.xml',
+                destination: '/api/sitemap.xml',
+            },
+        ];
+    },
 /**
  * @type {import('next').NextConfig}
  */
@@ -11,5 +19,39 @@ const nextConfig = {
         '192.168.1.84'
     ]
 };
+    module.exports = {
+        env: {
+            stackbitPreview: process.env.STACKBIT_PREVIEW
+        },
+        trailingSlash: true,
+        reactStrictMode: true,
+        allowedDevOrigins: [
+            '192.168.1.84'
+        ],
+        async headers() {
+            return [
+                {
+                    source: '/_next/static/(.*)',
+                    headers: [
+                        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+                    ],
+                },
+                {
+                    source: '/images/(.*)',
+                    headers: [
+                        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+                    ],
+                },
+            ];
+        },
+        async rewrites() {
+            return [
+                {
+                    source: '/sitemap.xml',
+                    destination: '/api/sitemap.xml',
+                },
+            ];
+        },
+    };
 
 module.exports = nextConfig;
