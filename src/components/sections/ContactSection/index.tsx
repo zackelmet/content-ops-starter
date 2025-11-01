@@ -58,13 +58,21 @@ export default function ContactSection(props) {
                 </div>
 
                 {/* Single outline box containing the form - on wide screens the form sits right of the description */}
-                {media && (
-                    <div className="w-full">
-                        <div className="w-full border border-white/6 rounded-lg p-6">
-                            <ContactMedia media={media} hasAnnotations={enableAnnotations} />
+                <form className="grid gap-4" data-netlify="true" name="contact" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p className="hidden">
+                        <label>
+                            Don’t fill this out if you’re human: <input name="bot-field" />
+                        </label>
+                    </p>
+                    {media && (
+                        <div className="w-full">
+                            <div className="w-full border border-white/6 rounded-lg p-6">
+                                <ContactMedia media={media} hasAnnotations={enableAnnotations} />
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </form>
             </div>
         </Section>
     );
