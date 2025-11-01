@@ -51,59 +51,62 @@ export default function GenericSection(props) {
                             'lg:max-w-[27.5rem]': hasMedia && hasXDirection
                         })}
                     >
-                        {badge && <Badge {...badge} {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
-                        {title && (
-                            <TitleBlock
-                                {...title}
-                                className={classNames({ 'mt-4': badge?.label })}
-                                {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
-                            />
-                        )}
-                        {subtitle && (
-                            <p
-                                className={classNames('text-lg', 'sm:text-2xl', styles?.subtitle ? mapStyles(styles?.subtitle) : undefined, {
-                                    'mt-4': badge?.label || title?.text
-                                })}
-                                {...(enableAnnotations && { 'data-sb-field-path': '.subtitle' })}
-                            >
-                                {subtitle}
-                            </p>
-                        )}
-                        {text && (
-                            <Markdown
-                                options={{ forceBlock: true, forceWrapper: true }}
-                                className={classNames('sb-markdown', 'sm:text-lg', styles?.text ? mapStyles(styles?.text) : undefined, {
-                                    'mt-6': badge?.label || title?.text || subtitle
-                                })}
-                                {...(enableAnnotations && { 'data-sb-field-path': '.text' })}
-                            >
-                                {text}
-                            </Markdown>
-                        )}
-                        {actions.length > 0 && (
-                            <div
-                                className={classNames(
-                                    'flex',
-                                    'flex-wrap',
-                                    mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }),
-                                    'items-center',
-                                    'gap-4',
-                                    {
-                                        'mt-8': badge?.label || title?.text || subtitle || text
-                                    }
-                                )}
-                                {...(enableAnnotations && { 'data-sb-field-path': '.actions' })}
-                            >
-                                {actions.map((action, index) => (
-                                    <Action
-                                        key={index}
-                                        {...action}
-                                        className="lg:whitespace-nowrap"
-                                        {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
-                                    />
-                                ))}
-                            </div>
-                        )}
+                        {/* optional semi-solid card behind text for readability */}
+                        <div className={classNames({ 'bg-black/30 backdrop-blur-sm rounded-xl p-6 lg:p-8': styles?.self?.textCard })}>
+                            {badge && <Badge {...badge} {...(enableAnnotations && { 'data-sb-field-path': '.badge' })} />}
+                            {title && (
+                                <TitleBlock
+                                    {...title}
+                                    className={classNames({ 'mt-4': badge?.label })}
+                                    {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
+                                />
+                            )}
+                            {subtitle && (
+                                <p
+                                    className={classNames('text-lg', 'sm:text-2xl', styles?.subtitle ? mapStyles(styles?.subtitle) : undefined, {
+                                        'mt-4': badge?.label || title?.text
+                                    })}
+                                    {...(enableAnnotations && { 'data-sb-field-path': '.subtitle' })}
+                                >
+                                    {subtitle}
+                                </p>
+                            )}
+                            {text && (
+                                <Markdown
+                                    options={{ forceBlock: true, forceWrapper: true }}
+                                    className={classNames('sb-markdown', 'sm:text-lg', styles?.text ? mapStyles(styles?.text) : undefined, {
+                                        'mt-6': badge?.label || title?.text || subtitle
+                                    })}
+                                    {...(enableAnnotations && { 'data-sb-field-path': '.text' })}
+                                >
+                                    {text}
+                                </Markdown>
+                            )}
+                            {actions.length > 0 && (
+                                <div
+                                    className={classNames(
+                                        'flex',
+                                        'flex-wrap',
+                                        mapStyles({ justifyContent: styles?.self?.justifyContent ?? 'flex-start' }),
+                                        'items-center',
+                                        'gap-4',
+                                        {
+                                            'mt-8': badge?.label || title?.text || subtitle || text
+                                        }
+                                    )}
+                                    {...(enableAnnotations && { 'data-sb-field-path': '.actions' })}
+                                >
+                                    {actions.map((action, index) => (
+                                        <Action
+                                            key={index}
+                                            {...action}
+                                            className="lg:whitespace-nowrap"
+                                            {...(enableAnnotations && { 'data-sb-field-path': `.${index}` })}
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 )}
                 {hasMedia && (

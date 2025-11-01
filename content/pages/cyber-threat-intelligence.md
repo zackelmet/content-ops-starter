@@ -2,13 +2,15 @@
 title: Cyber Threat Intelligence
 slug: cyber-threat-intelligence
 sections:
-  - type: BasicSection
-    title:
+  - title:
       text: "🛡️ Threat Intelligence Built for Audit Readiness"
       color: text-light
+      styles:
+        self:
+          textAlign: center
       type: TitleBlock
     subtitle: Continuous monitoring, ready for audit.
-    text: |-
+    text: >
       We deploy autonomous CTI agents that collect, analyze, and report threat data — automatically generating the evidence auditors and customers require.
 
       Each agent integrates directly into your SIEM, alerting pipelines, and log management systems to produce actionable intelligence and verifiable proof of continuous monitoring.
@@ -19,46 +21,45 @@ sections:
         iconPosition: right
         style: primary
         type: Button
-      - label: Book a Consultation
-        url: /contact
-        icon: calendar
-        iconPosition: right
-        style: secondary
-        type: Button
-    media:
-      type: FoxAnimation
-      elementId: fox-hero-anim
-      styles:
-        self:
-          placement: inline
-          justifyContent: center
-    colors: bg-dark-fg-light
+    colors: bg-neutral-fg-dark
     styles:
       self:
         padding:
-          - pt-20
-          - pb-16
-          - pl-12
-          - pr-12
+          - pt-40
+          - pl-4
+          - pb-40
+          - pr-4
+        alignItems: center
+        textCard: true
+        flexDirection: row-reverse
         justifyContent: center
+      text:
+        textAlign: center
+      subtitle:
+        textAlign: center
+    type: GenericSection
+    backgroundImage:
+      type: BackgroundImage
+      altText: abstract background
+      backgroundSize: cover
+      backgroundPosition: center
+      backgroundRepeat: no-repeat
+      opacity: 100
+      url: /images/abstract-background.svg
 
   - type: BasicSection
     title:
-      text: "Why It Matters: Turn CTI into Compliance Evidence"
+      text: "Turn CTI into Compliance Evidence"
       color: text-dark
       type: TitleBlock
+    # Convert to structured feature cards for better scannability
     text: |-
-      Most compliance frameworks require proof of ongoing monitoring — but manual reporting wastes time and introduces risk.
+      Our CTI agents remove the manual burden of evidence collection and turn operational telemetry into auditable artifacts.
 
-      Our CTI agents automate this process end-to-end, creating a continuous stream of telemetry, alerts, and audit-ready reports that demonstrate your organization is actively identifying, assessing, and responding to threats.
-
-      You get:
-
-      - Verified CTI data mapped to compliance controls
-      - Continuous visibility into emerging threats
+      - Verified CTI data mapped directly to compliance controls
+      - Continuous visibility into emerging threats and attacker behavior
       - Automated evidence generation for auditors and customers
-
-      Your security team focuses on defending — not documenting.
+    # additional structured content rendered by the section component (cards)
     colors: bg-neutral-fg-dark
     styles:
       self:
@@ -74,28 +75,14 @@ sections:
       text: "Compliance Alignment: SOC 2, PCI DSS 10, NIST CSF DE.CM"
       color: text-dark
       type: TitleBlock
+    # Render each framework as a card with short supporting copy so the page is easier to scan
     text: |-
-      Our approach is built around the language of compliance.
+      Our CTI architecture maps telemetry and detections directly to the controls your auditors expect. Each framework below has dedicated collection and reporting flows built in.
 
-      **SOC 2 (Security Trust Services Criteria):**
-
-      “System components must be monitored to identify deviations from expected configurations and detect security events.”
-
-      Our agents continuously collect and record relevant telemetry to satisfy CC6.6 and CC7.2.
-
-      **PCI DSS (Requirement 10):**
-
-      “Track and monitor all access to network resources and cardholder data.”
-
-      CTI agents log access, correlate threat activity, and provide enriched data that supports PCI DSS 10 and 11.4 compliance.
-
-      **NIST CSF (DE.CM — Continuous Monitoring):**
-
-      “Continuous monitoring of system components and their configurations is necessary to identify deviations from expected behavior.”
-
-      Agents provide real-time visibility across systems, supporting DE.CM-1 through DE.CM-8 categories.
-
-      Each CTI workflow is designed to collect the exact telemetry these frameworks expect and export audit-ready documentation at any time.
+      - SOC 2 — Continuous monitoring and event logging aligned to Trust Services Criteria (CC6.6, CC7.2)
+      - PCI DSS — Exhaustive access and event logs tied to Requirement 10 and relevant sub-controls
+      - NIST CSF (DE.CM) — Real-time monitoring that supports DE.CM categories and evidence export
+    # the section component will render each framework as a distinct card
     colors: bg-light-fg-dark
     styles:
       self:
@@ -104,29 +91,7 @@ sections:
           - pb-10
         justifyContent: center
 
-  - type: BasicSection
-    title:
-      text: "How It Works: Agents Collect Telemetry and Generate Reports"
-      color: text-dark
-      type: TitleBlock
-    text: |-
-      Our CTI agents operate continuously to gather threat intelligence, correlate findings, and deliver detailed evidence that compliance teams can use immediately.
-
-      Core functions include:
-
-      - Continuous data collection from internal and external sources
-      - IOC correlation, enrichment, and trend tracking
-      - Integration with SIEMs and ticketing systems
-      - Automated generation of compliance and audit reports
-
-      Every detection and response activity is logged, timestamped, and stored to demonstrate adherence to monitoring requirements.
-    colors: bg-neutral-fg-dark
-    styles:
-      self:
-        padding:
-          - pt-10
-          - pb-10
-        justifyContent: center
+  # 'How It Works' removed to streamline the page — core functions are summarized elsewhere
 
   - type: PricingSection
     title:
@@ -140,25 +105,25 @@ sections:
     plans:
       - title: Discover & Scope
         description: >-
-          We assess your data sources, compliance frameworks, and integration points to define where CTI agents should collect telemetry and how evidence will be stored.
+          We map assets and controls to pinpoint where audit-grade telemetry must be collected.
         features:
           - Stakeholder interviews
           - Data-source inventory
       - title: Design & Build
         description: >-
-          Our team architects the CTI workflows, alerting logic, and reporting structures aligned to your compliance and operational needs.
+          We build CTI workflows and integrations that generate control-aligned evidence.
         features:
           - Detection & enrichment design
           - Reporting structures
       - title: Validate & Deploy
         description: >-
-          We implement, integrate, and test each agent to ensure visibility, data integrity, and reporting accuracy within your existing systems.
+          We validate detections and deploy agents so evidence is dependable under audit.
         features:
           - Integration testing
           - Evidence validation
       - title: Operate & Improve
         description: >-
-          We continuously tune detections, enrich intelligence, and deliver reports that support ongoing compliance — so you’re always audit-ready.
+          We operate and tune agents, delivering continuous, audit-ready reporting.
         features:
           - Ongoing tuning
           - Regular reporting
@@ -170,7 +135,7 @@ sections:
           - pb-8
         justifyContent: center
 
-  - type: BasicSection
+  - type: ContactSection
     title:
       text: Request a Quote
       color: text-dark
@@ -243,7 +208,7 @@ sections:
       type: FormBlock
       submitButton:
         type: SubmitButtonFormControl
-        label: Request a Quote
+        label: Contact Us
         showIcon: false
         icon: arrowRight
         iconPosition: right
