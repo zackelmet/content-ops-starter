@@ -14,7 +14,7 @@ export default function ContactSection(props) {
     return (
         <Section
             elementId={elementId}
-            className="sb-component-contact-section"
+            className="sb-component-contact-section px-4 md:px-8"
             colors={colors}
             backgroundImage={backgroundImage}
             styles={styles?.self}

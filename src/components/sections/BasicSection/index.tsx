@@ -2,6 +2,7 @@ import * as React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classNames from 'classnames';
 
+import Image from 'next/image';
 import { getComponent } from '../../components-registry';
 import { mapStylesToClassNames as mapStyles } from '../../../utils/map-styles-to-class-names';
 import { getDataAttrs } from '../../../utils/get-data-attrs';
@@ -150,7 +151,7 @@ export default function BasicSection(props) {
                                         <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
                                             <div className="bg-white/6 p-8 rounded-xl shadow-md bounce-on-hover fade-in flex flex-col">
                                                 <div className="flex items-center gap-3 mb-3">
-                                                    <img src="/images/soc2.jpeg" alt="SOC 2" className="w-20 h-20 rounded-full object-cover border-4 border-primary" />
+                                                    <Image src="/images/soc2.jpeg" alt="SOC 2" width={80} height={80} className="rounded-full object-cover border-4 border-primary" />
                                                     <h4 className="text-2xl font-semibold mb-0">SOC 2</h4>
                                                 </div>
                                                 <p className="text-lg italic mb-4">“System components must be monitored to identify deviations…”</p>
@@ -158,7 +159,7 @@ export default function BasicSection(props) {
                                             </div>
                                             <div className="bg-white/6 p-8 rounded-xl shadow-md bounce-on-hover fade-in flex flex-col">
                                                 <div className="flex items-center gap-3 mb-3">
-                                                    <img src="/images/pcidss.jpeg" alt="PCI DSS" className="w-20 h-20 rounded-full object-cover border-4 border-amber-400" />
+                                                    <Image src="/images/pcidss.jpeg" alt="PCI DSS" width={80} height={80} className="rounded-full object-cover border-4 border-amber-400" />
                                                     <h4 className="text-2xl font-semibold mb-0">PCI DSS</h4>
                                                 </div>
                                                 <p className="text-lg italic mb-4">“Track and monitor all access to network resources and cardholder data.”</p>
@@ -166,7 +167,7 @@ export default function BasicSection(props) {
                                             </div>
                                             <div className="bg-white/6 p-8 rounded-xl shadow-md bounce-on-hover fade-in flex flex-col">
                                                 <div className="flex items-center gap-3 mb-3">
-                                                    <img src="/images/nist-csf.jpeg" alt="NIST CSF" className="w-20 h-20 rounded-full object-cover border-4 border-teal-400" />
+                                                    <Image src="/images/nist-csf.jpeg" alt="NIST CSF" width={80} height={80} className="rounded-full object-cover border-4 border-teal-400" />
                                                     <h4 className="text-2xl font-semibold mb-0">NIST CSF (DE.CM)</h4>
                                                 </div>
                                                 <p className="text-lg italic mb-4">“Continuous monitoring of system components…”</p>
