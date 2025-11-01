@@ -140,7 +140,7 @@ sections:
       text: "Contact us"
       color: text-dark
       type: TitleBlock
-    subtitle: Get in touch our a team and get compliant.
+    subtitle: Get in touch with our team and get compliant.
     text: Or chat with us directly on Linkedin 💬
     media:
       fields:
