@@ -1,0 +1,27 @@
+---
+title: Amass
+slug: amass
+date: '2025-11-01'
+excerpt: >-
+  Subdomain and asset discovery
+featuredImage:
+  url: undefined
+  altText: Amass
+  styles:
+    self:
+      borderRadius: large
+  type: ImageBlock
+isFeatured: false
+tags: [osint, recon, dns]
+category: Reconnaissance & OSINT
+source: https://github.com/owasp-amass/amass
+type: PostLayout
+---
+
+
+# Amass
+
+**Category:** Reconnaissance & OSINT  
+**URL:** [https://github.com/owasp-amass/amass](https://github.com/owasp-amass/amass)  
+
+Subdomain and asset discovery
