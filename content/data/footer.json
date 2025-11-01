@@ -4,7 +4,7 @@
         "altText": "Logo light",
         "type": "ImageBlock"
     },
-    "text": "Stay compliant. Stay protected. Stay ahead.",
+    "text": "Stay compliant. Stay protected.",
     "primaryLinks": {
         "title": "Blogs",
         "links": [
@@ -78,7 +78,7 @@
     "legalLinks": [
         {
             "label": "Built by Zack El Metennani",
-            "url": "/",
+            "url": "https://zackelmet.github.io/",
             "icon": "arrowRight",
             "iconPosition": "right",
             "style": "secondary",

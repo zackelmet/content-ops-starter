@@ -3,7 +3,7 @@ title: Cyber Threat Intelligence
 slug: cyber-threat-intelligence
 sections:
   - title:
-      text: "🛡️ Threat Intelligence Built for Audit Readiness"
+      text: "Threat Intelligence Built for Audit Readiness"
       color: text-light
       styles:
         self:
@@ -11,7 +11,7 @@ sections:
       type: TitleBlock
     subtitle: Continuous monitoring, ready for audit.
     text: >
-      We deploy autonomous CTI agents that collect, analyze, and report threat data — automatically generating the evidence auditors and customers require.
+      We deploy workflows and autonomous CTI agents that collect, analyze, and report threat data. Automatically generating the evidence auditors and customers require.
 
       Each agent integrates directly into your SIEM, alerting pipelines, and log management systems to produce actionable intelligence and verifiable proof of continuous monitoring.
     actions:
@@ -93,7 +93,7 @@ sections:
 
   # 'How It Works' removed to streamline the page — core functions are summarized elsewhere
 
-  - type: PricingSection
+  - type: OurProcessSection
     title:
       type: TitleBlock
       text: Our Process
@@ -117,7 +117,7 @@ sections:
           - Reporting structures
       - title: Validate & Deploy
         description: >-
-          We validate detections and deploy agents so evidence is dependable under audit.
+          We validate detections and deploy agents so evidence is dependable under audit while syncing with your GRC dashboards and current workflows.
         features:
           - Integration testing
           - Evidence validation
@@ -137,12 +137,11 @@ sections:
 
   - type: ContactSection
     title:
-      text: Request a Quote
+      text: "Contact us"
       color: text-dark
       type: TitleBlock
-    subtitle: Tell us about your environment and goals
-    text: |-
-      Tell us about your environment and goals, and we’ll build a tailored quote for your CTI compliance rollout.
+    subtitle: Get in touch our a team and get compliant.
+    text: Or chat with us directly on Linkedin 💬
     media:
       fields:
         - name: name
@@ -152,13 +151,6 @@ sections:
           isRequired: true
           width: full
           type: TextFormControl
-        - name: organization
-          label: Organization
-          hideLabel: true
-          placeholder: Your organization
-          isRequired: false
-          width: full
-          type: TextFormControl
         - name: email
           label: Email
           hideLabel: true
@@ -166,33 +158,20 @@ sections:
           isRequired: true
           width: full
           type: EmailFormControl
-        - name: industry
-          label: Industry & regulatory scope
+        - name: company
+          label: Company
           hideLabel: true
-          placeholder: Industry and regulatory scope (e.g., Healthcare, PCI, SOC 2)
+          placeholder: Your company
           isRequired: false
           width: full
           type: TextFormControl
-        - name: systems
-          label: Systems / environments to monitor
+        - name: goals
+          label: Project Goals
           hideLabel: true
-          placeholder: List systems, environments, or hosts to monitor
-          isRequired: true
-          width: full
-          type: TextareaFormControl
-        - name: compliance_priorities
-          label: Compliance priorities
-          hideLabel: true
-          placeholder: Which frameworks are highest priority (PCI DSS, SOC 2, NIST, etc.)
+          placeholder: What compliance frameworks do you need to satisfy? 
           isRequired: false
           width: full
           type: TextFormControl
-        - name: notes
-          label: Additional notes
-          hideLabel: true
-          placeholder: Any additional details
-          width: full
-          type: TextareaFormControl
       elementId: quote-form
       styles:
         self:
@@ -214,6 +193,13 @@ sections:
         iconPosition: right
         style: primary
         elementId: null
+        text: |-
+          <div style="text-align:center;margin-top:1.5rem;">
+            <span style="display:block;font-size:1.1rem;font-weight:500;color:#0a66c2;margin-bottom:0.75rem;">or chat with us directly</span>
+            <a href="https://www.linkedin.com/company/hacker-analytics/" target="_blank" rel="noopener" style="display:inline-block;">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:40px;height:40px;vertical-align:middle;" />
+            </a>
+          </div>
     colors: bg-light-fg-dark
     styles:
       self:

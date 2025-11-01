@@ -1,3 +1,46 @@
+/* Improved bounce animation for process cards: springy, repeatable, pure CSS hover */
+/* Dramatic, springy bounce with shadow pulse and color feedback */
+/* Calm, chill hover: slow, slight lift and soft shadow */
+.bounce-on-hover {
+    transition: transform 0.35s cubic-bezier(.22, 1, .36, 1), box-shadow 0.35s cubic-bezier(.22, 1, .36, 1);
+}
+
+.bounce-on-hover:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px #00fed980;
+}
+
+/* Bounce animation for process cards */
+.bounce {
+    animation: bounceCard 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+@keyframes bounceCard {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+
+    20% {
+        transform: scale(1.08, 0.92) translateY(-8px);
+    }
+
+    40% {
+        transform: scale(0.96, 1.04) translateY(4px);
+    }
+
+    60% {
+        transform: scale(1.03, 0.97) translateY(-2px);
+    }
+
+    80% {
+        transform: scale(0.98, 1.02) translateY(2px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
 /* Local site font (loaded from /public/fonts) */
 @font-face {
     font-family: 'ShareTechMono';
@@ -538,7 +581,9 @@ body * {
     }
 
     .card-hover:hover {
-        @apply -translate-y-1 shadow-lg;
+        @apply -translate-y-3 shadow-2xl scale-105;
+        /* trigger a short bounce when hover starts */
+        animation: hoverBounce 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
 
     .fade-in {
@@ -556,4 +601,37 @@ body * {
             transform: translateY(0);
         }
     }
+
+    @keyframes hoverBounce {
+        0% {
+            transform: translateY(0) scale(1);
+        }
+
+        30% {
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        60% {
+            transform: translateY(-4px) scale(1.015);
+        }
+
+        100% {
+            transform: translateY(-3px) scale(1.02);
+        }
+    }
+}
+
+/* Make form placeholders cyan for the quote form so sample text matches site color */
+#quote-form .sb-input::placeholder,
+#quote-form .sb-textarea::placeholder,
+#quote-form .sb-select::placeholder {
+    color: #00fed9 !important;
+    opacity: 0.7;
+}
+
+/* Ensure textarea and inputs inherit cyan text color for sample values */
+#quote-form .sb-input,
+#quote-form .sb-textarea,
+#quote-form .sb-select {
+    color: #00fed9 !important;
 }

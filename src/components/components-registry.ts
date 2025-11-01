@@ -52,6 +52,7 @@ const components = {
     ImageGallerySection: dynamic(() => import('./sections/ImageGallerySection')),
     'CTI-AgentsSection': dynamic(() => import('./sections/PricingSection')),
     'malware-reportSection': dynamic(() => import('./sections/PricingSection')),
+    OurProcessSection: dynamic(() => import('./sections/OurProcessSection')),
     PostFeedSection: dynamic(() => import('./sections/PostFeedSection')),
     PricingSection: dynamic(() => import('./sections/PricingSection')),
     RecentPostsSection: dynamic(() => import('./sections/RecentPostsSection')),

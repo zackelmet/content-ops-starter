@@ -81,6 +81,80 @@ sections:
     styles:
       self:
         justifyContent: center
+
+  - type: ContactSection
+    elementId: contact-section
+    title:
+      text: "Contact us"
+      color: text-dark
+      type: TitleBlock
+    subtitle: Get in touch our a team and get compliant.
+    text: Or chat with us directly on Linkedin 💬
+    media:
+      fields:
+        - name: name
+          label: Name
+          hideLabel: true
+          placeholder: Your name
+          isRequired: true
+          width: full
+          type: TextFormControl
+        - name: email
+          label: Email
+          hideLabel: true
+          placeholder: Your email
+          isRequired: true
+          width: full
+          type: EmailFormControl
+        - name: company
+          label: Company
+          hideLabel: true
+          placeholder: Your company
+          isRequired: false
+          width: full
+          type: TextFormControl
+        - name: goals
+          label: Project Goals
+          hideLabel: true
+          placeholder: What compliance frameworks do you need to satisfy? 
+          isRequired: false
+          width: full
+          type: TextFormControl
+      elementId: quote-form
+      styles:
+        self:
+          padding:
+            - pt-6
+            - pb-6
+            - pl-6
+            - pr-6
+          borderColor: border-light
+          borderStyle: solid
+          borderWidth: 1
+          borderRadius: large
+      type: FormBlock
+      submitButton:
+        type: SubmitButtonFormControl
+        label: Contact Us
+        showIcon: false
+        icon: arrowRight
+        iconPosition: right
+        style: primary
+        elementId: null
+        text: |-
+          <div style="text-align:center;margin-top:1.5rem;">
+            <span style="display:block;font-size:1.1rem;font-weight:500;color:#0a66c2;margin-bottom:0.75rem;">or chat with us directly</span>
+            <a href="https://www.linkedin.com/company/hacker-analytics/" target="_blank" rel="noopener" style="display:inline-block;">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="width:40px;height:40px;vertical-align:middle;" />
+            </a>
+          </div>
+    colors: bg-light-fg-dark
+    styles:
+      self:
+        padding:
+          - pt-10
+          - pb-10
+      justifyContent: center
 seo:
   metaTitle: Hacker Analytics - Deep Cyber Threat Intel
   metaDescription: Hacker Analytics - Deep Cyber Threat Intel

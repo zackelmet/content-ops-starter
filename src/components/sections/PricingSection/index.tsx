@@ -102,6 +102,9 @@ function PricingPlan(props) {
                 'fade-in',
                 'h-full',
                 colors,
+                // force a dark card background and cyan text so cards are readable regardless of section palette
+                'bg-[#071128]',
+                'text-[#00fed9]',
                 styles?.self?.margin ? mapStyles({ margin: styles?.self?.margin }) : undefined,
                 styles?.self?.borderWidth && styles?.self?.borderWidth !== 0 && styles?.self?.borderStyle !== 'none'
                     ? mapStyles({

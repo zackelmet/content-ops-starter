@@ -79,7 +79,7 @@ export default function BasicSection(props) {
                             {title && (
                                 <TitleBlock
                                     {...title}
-                                    className={classNames({ 'mt-4': badge?.label })}
+                                    className={classNames('mb-4', { 'mt-4': badge?.label })}
                                     {...(enableAnnotations && { 'data-sb-field-path': '.title' })}
                                 />
                             )}
@@ -148,25 +148,25 @@ export default function BasicSection(props) {
                                 if (isComplianceAlignment) {
                                     return (
                                         <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
-                                            <div className="bg-white/6 p-8 rounded-xl shadow-md card-hover fade-in flex flex-col">
+                                            <div className="bg-white/6 p-8 rounded-xl shadow-md bounce-on-hover fade-in flex flex-col">
                                                 <div className="flex items-center gap-3 mb-3">
-                                                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-light">S2</div>
+                                                    <img src="/images/soc2.jpeg" alt="SOC 2" className="w-20 h-20 rounded-full object-cover border-4 border-primary" />
                                                     <h4 className="text-2xl font-semibold mb-0">SOC 2</h4>
                                                 </div>
                                                 <p className="text-lg italic mb-4">“System components must be monitored to identify deviations…”</p>
                                                 <p className="text-sm mt-auto">Continuous collection and retention aligned to CC6.6 &amp; CC7.2.</p>
                                             </div>
-                                            <div className="bg-white/6 p-8 rounded-xl shadow-md card-hover fade-in flex flex-col">
+                                            <div className="bg-white/6 p-8 rounded-xl shadow-md bounce-on-hover fade-in flex flex-col">
                                                 <div className="flex items-center gap-3 mb-3">
-                                                    <div className="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center font-bold text-dark">PCI</div>
+                                                    <img src="/images/pcidss.jpeg" alt="PCI DSS" className="w-20 h-20 rounded-full object-cover border-4 border-amber-400" />
                                                     <h4 className="text-2xl font-semibold mb-0">PCI DSS</h4>
                                                 </div>
                                                 <p className="text-lg italic mb-4">“Track and monitor all access to network resources and cardholder data.”</p>
                                                 <p className="text-sm mt-auto">Comprehensive access and event logging for Requirement 10 evidence.</p>
                                             </div>
-                                            <div className="bg-white/6 p-8 rounded-xl shadow-md card-hover fade-in flex flex-col">
+                                            <div className="bg-white/6 p-8 rounded-xl shadow-md bounce-on-hover fade-in flex flex-col">
                                                 <div className="flex items-center gap-3 mb-3">
-                                                    <div className="w-10 h-10 rounded-full bg-teal-400 flex items-center justify-center font-bold text-dark">NIST</div>
+                                                    <img src="/images/nist-csf.jpeg" alt="NIST CSF" className="w-20 h-20 rounded-full object-cover border-4 border-teal-400" />
                                                     <h4 className="text-2xl font-semibold mb-0">NIST CSF (DE.CM)</h4>
                                                 </div>
                                                 <p className="text-lg italic mb-4">“Continuous monitoring of system components…”</p>
