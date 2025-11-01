@@ -65,13 +65,21 @@ export default function ContactSection(props) {
                             Don’t fill this out if you’re human: <input name="bot-field" />
                         </label>
                     </p>
-                    {media && (
-                        <div className="w-full">
-                            <div className="w-full border border-white/6 rounded-lg p-6">
-                                <ContactMedia media={media} hasAnnotations={enableAnnotations} />
-                            </div>
-                        </div>
-                    )}
+                    <div className="flex flex-col gap-2 mb-4">
+                        <label className="font-semibold text-white tracking-wide mb-1" htmlFor="name">Your Name *</label>
+                        <input id="name" name="name" type="text" required className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Enter your name" />
+                    </div>
+                    <div className="flex flex-col gap-2 mb-4">
+                        <label className="font-semibold text-white tracking-wide mb-1" htmlFor="email">Email Address *</label>
+                        <input id="email" name="email" type="email" required className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Enter your email" />
+                    </div>
+                    <div className="flex flex-col gap-2 mb-6">
+                        <label className="font-semibold text-white tracking-wide mb-1" htmlFor="message">Message *</label>
+                        <textarea id="message" name="message" className="bg-white/10 backdrop-blur border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 min-h-[100px] focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="Type your message..." />
+                    </div>
+                    <button type="submit" className="w-full py-3 px-6 bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:from-blue-800 hover:to-indigo-700 transition-all border border-white/20 backdrop-blur">
+                        <span className="tracking-wide">Send Message</span>
+                    </button>
                 </form>
             </div>
         </Section>
