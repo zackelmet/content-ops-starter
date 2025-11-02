@@ -15,9 +15,10 @@ export default async function handler(req, res) {
   // Optionally, you can scan your content/pages directory for more routes
   // For demo, we use static list above
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+  const baseUrl = 'https://hackeranalytics.com';
   const urls = staticPages.map((page) => {
-    return `<url><loc>${baseUrl}/${page}</loc></url>`;
+    const path = page ? `/${page}` : '';
+    return `<url><loc>${baseUrl}${path}</loc></url>`;
   }).join('');
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
