@@ -1,21 +1,24 @@
 ---
 title: Amass
-slug: amass
-date: '2025-11-06'
-excerpt: >-
-  Subdomain and asset discovery
+slug: redteam-tools/amass
+date: '2025-08-27'
+excerpt: Subdomain and asset discovery
 featuredImage:
-  url: undefined
+  url: /images/img-placeholder.svg
   altText: Amass
   styles:
     self:
       borderRadius: large
   type: ImageBlock
 isFeatured: false
-tags: [osint, recon, dns]
-category: Reconnaissance & OSINT
-source: https://github.com/owasp-amass/amass
+tags:
+  - osint
+  - recon
+  - dns
+category: redteam-tools
+source: 'https://github.com/owasp-amass/amass'
 type: PostLayout
+colors: bg-dark-fg-light
 ---
 
 
