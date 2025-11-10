@@ -4,7 +4,7 @@
 
 ## Vision
 
-Hacker Analytics is a CTI (Cyber Threat Intelligence) voice and research organization. Our mission is to:
+Hacker Analytics is a CTI (Cyber Threat Intelligence) research organization. Our mission is to:
 
 - Provide actionable, independent threat intelligence and analysis for security teams, researchers, and decision-makers.
 - Deliver original research, commentary, and reporting on cyber threats, actors, and trends.
