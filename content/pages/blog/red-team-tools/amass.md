@@ -5,7 +5,7 @@ date: '2025-11-10'
 excerpt: >-
   Subdomain and asset discovery
 featuredImage:
-  url: undefined
+  url: /images/img-placeholder.svg
   altText: Amass
   styles:
     self:
@@ -16,6 +16,7 @@ tags: [osint, recon, dns]
 category: redteam-tools
 source: https://github.com/owasp-amass/amass
 type: PostLayout
+colors: bg-dark-fg-light
 ---
 
 
