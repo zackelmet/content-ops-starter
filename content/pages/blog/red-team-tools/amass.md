@@ -5,7 +5,7 @@ date: '2025-11-10'
 excerpt: >-
   Subdomain and asset discovery
 featuredImage:
-  url: /images/img-placeholder.svg
+  url: https://romanr301.github.io/spiderfoot/spiderfoot/img/video-thumbnail.png
   altText: Amass
   styles:
     self:
