@@ -7,6 +7,7 @@ import Section from '../Section';
 import { Action, Badge } from '../../atoms';
 import TitleBlock from '../../blocks/TitleBlock';
 import PostFeedItem from './PostFeedItem';
+import RedTeamToolCard from './RedTeamToolCard';
 
 export default function PostFeedSection(props) {
     const {
@@ -141,20 +142,38 @@ function PostFeedThreeColGrid(props) {
             })}
             {...(hasAnnotations && annotatePosts && { 'data-sb-field-path': '.posts' })}
         >
-            {posts.map((post, index) => (
-                <PostFeedItem
-                    key={index}
-                    post={post}
-                    showThumbnail={showThumbnail}
-                    showExcerpt={showExcerpt}
-                    showDate={showDate}
-                    showAuthor={showAuthor}
-                    hasSectionTitle={hasSectionTitle}
-                    hoverEffect={hoverEffect}
-                    sectionColors={colors}
-                    hasAnnotations={hasAnnotations}
-                />
-            ))}
+            {posts.map((post, index) => {
+                console.log(`[DEBUG] Post: ${post.title}, Type: ${post.type}, ModelName: ${post.__metadata?.modelName}`);
+                // Use RedTeamToolCard for ToolLayout type
+                if (post.type === 'ToolLayout') {
+                    console.log(`[DEBUG] ✅ Rendering RedTeamToolCard for: ${post.title}`);
+                    return (
+                        <RedTeamToolCard
+                            key={index}
+                            post={post}
+                            hoverEffect={hoverEffect}
+                            sectionColors={colors}
+                            hasAnnotations={hasAnnotations}
+                        />
+                    );
+                }
+                // Use regular PostFeedItem for other posts
+                console.log(`[DEBUG] ❌ Rendering PostFeedItem for: ${post.title}`);
+                return (
+                    <PostFeedItem
+                        key={index}
+                        post={post}
+                        showThumbnail={showThumbnail}
+                        showExcerpt={showExcerpt}
+                        showDate={showDate}
+                        showAuthor={showAuthor}
+                        hasSectionTitle={hasSectionTitle}
+                        hoverEffect={hoverEffect}
+                        sectionColors={colors}
+                        hasAnnotations={hasAnnotations}
+                    />
+                );
+            })}
         </div>
     );
 }
@@ -181,20 +200,35 @@ function PostFeedTwoColGrid(props) {
             className={classNames('w-full', 'grid', 'gap-10', 'sm:grid-cols-2', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && annotatePosts && { 'data-sb-field-path': '.posts' })}
         >
-            {posts.map((post, index) => (
-                <PostFeedItem
-                    key={index}
-                    post={post}
-                    showThumbnail={showThumbnail}
-                    showExcerpt={showExcerpt}
-                    showDate={showDate}
-                    showAuthor={showAuthor}
-                    hasSectionTitle={hasSectionTitle}
-                    hoverEffect={hoverEffect}
-                    sectionColors={colors}
-                    hasAnnotations={hasAnnotations}
-                />
-            ))}
+            {posts.map((post, index) => {
+                // Use RedTeamToolCard for ToolLayout type
+                if (post.type === 'ToolLayout') {
+                    return (
+                        <RedTeamToolCard
+                            key={index}
+                            post={post}
+                            hoverEffect={hoverEffect}
+                            sectionColors={colors}
+                            hasAnnotations={hasAnnotations}
+                        />
+                    );
+                }
+                // Use regular PostFeedItem for other posts
+                return (
+                    <PostFeedItem
+                        key={index}
+                        post={post}
+                        showThumbnail={showThumbnail}
+                        showExcerpt={showExcerpt}
+                        showDate={showDate}
+                        showAuthor={showAuthor}
+                        hasSectionTitle={hasSectionTitle}
+                        hoverEffect={hoverEffect}
+                        sectionColors={colors}
+                        hasAnnotations={hasAnnotations}
+                    />
+                );
+            })}
         </div>
     );
 }
@@ -221,20 +255,35 @@ function PostFeedSmallList(props) {
             className={classNames('w-full', 'max-w-3xl', 'grid', 'gap-10', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && annotatePosts && { 'data-sb-field-path': '.posts' })}
         >
-            {posts.map((post, index) => (
-                <PostFeedItem
-                    key={index}
-                    post={post}
-                    showThumbnail={showThumbnail}
-                    showExcerpt={showExcerpt}
-                    showDate={showDate}
-                    showAuthor={showAuthor}
-                    hasSectionTitle={hasSectionTitle}
-                    hoverEffect={hoverEffect}
-                    sectionColors={colors}
-                    hasAnnotations={hasAnnotations}
-                />
-            ))}
+            {posts.map((post, index) => {
+                // Use RedTeamToolCard for ToolLayout type
+                if (post.type === 'ToolLayout') {
+                    return (
+                        <RedTeamToolCard
+                            key={index}
+                            post={post}
+                            hoverEffect={hoverEffect}
+                            sectionColors={colors}
+                            hasAnnotations={hasAnnotations}
+                        />
+                    );
+                }
+                // Use regular PostFeedItem for other posts
+                return (
+                    <PostFeedItem
+                        key={index}
+                        post={post}
+                        showThumbnail={showThumbnail}
+                        showExcerpt={showExcerpt}
+                        showDate={showDate}
+                        showAuthor={showAuthor}
+                        hasSectionTitle={hasSectionTitle}
+                        hoverEffect={hoverEffect}
+                        sectionColors={colors}
+                        hasAnnotations={hasAnnotations}
+                    />
+                );
+            })}
         </div>
     );
 }
@@ -261,21 +310,36 @@ function PostFeedBigList(props) {
             className={classNames('w-full', 'grid', 'gap-10', { 'mt-12': hasTopMargin })}
             {...(hasAnnotations && annotatePosts && { 'data-sb-field-path': '.posts' })}
         >
-            {posts.map((post, index) => (
-                <PostFeedItem
-                    key={index}
-                    post={post}
-                    showThumbnail={showThumbnail}
-                    showExcerpt={showExcerpt}
-                    showDate={showDate}
-                    showAuthor={showAuthor}
-                    hasSectionTitle={hasSectionTitle}
-                    hasBigThumbnail={true}
-                    hoverEffect={hoverEffect}
-                    sectionColors={colors}
-                    hasAnnotations={hasAnnotations}
-                />
-            ))}
+            {posts.map((post, index) => {
+                // Use RedTeamToolCard for ToolLayout type
+                if (post.type === 'ToolLayout') {
+                    return (
+                        <RedTeamToolCard
+                            key={index}
+                            post={post}
+                            hoverEffect={hoverEffect}
+                            sectionColors={colors}
+                            hasAnnotations={hasAnnotations}
+                        />
+                    );
+                }
+                // Use regular PostFeedItem for other posts
+                return (
+                    <PostFeedItem
+                        key={index}
+                        post={post}
+                        showThumbnail={showThumbnail}
+                        showExcerpt={showExcerpt}
+                        showDate={showDate}
+                        showAuthor={showAuthor}
+                        hasSectionTitle={hasSectionTitle}
+                        hasBigThumbnail={true}
+                        hoverEffect={hoverEffect}
+                        sectionColors={colors}
+                        hasAnnotations={hasAnnotations}
+                    />
+                );
+            })}
         </div>
     );
 }

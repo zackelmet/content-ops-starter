@@ -15,7 +15,7 @@ isFeatured: false
 tags: [osint, automation]
 category: redteam-tools
 source: https://github.com/smicallef/spiderfoot
-type: PostLayout
+type: ToolLayout
 colors: bg-dark-fg-light
 ---
 

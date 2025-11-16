@@ -10,9 +10,10 @@ export default function PostLayout(props) {
     const { page, site } = props;
     const BaseLayout = getBaseLayoutComponent(page.baseLayout, site.baseLayout);
     const { enableAnnotations = true } = site;
-    const { title, date, author, markdown_content, bottomSections = [] } = page;
-    const dateTimeAttr = dayjs(date).format('YYYY-MM-DD HH:mm:ss');
-    const formattedDate = dayjs(date).format('YYYY-MM-DD');
+    const { title, date, author, markdown_content, bottomSections = [], category } = page;
+    const dateTimeAttr = date ? dayjs(date).format('YYYY-MM-DD HH:mm:ss') : undefined;
+    const formattedDate = date ? dayjs(date).format('YYYY-MM-DD') : undefined;
+    const shouldShowDate = category !== 'redteam-tools' && date;
 
     return (
         <BaseLayout page={page} site={site}>
@@ -22,12 +23,14 @@ export default function PostLayout(props) {
                         <header className="max-w-4xl mx-auto mb-12 text-center">
                             <h1 {...(enableAnnotations && { 'data-sb-field-path': 'title' })}>{title}</h1>
                             <div className="mt-4 text-sm uppercase">
-                                <time dateTime={dateTimeAttr} {...(enableAnnotations && { 'data-sb-field-path': 'date' })}>
-                                    {formattedDate}
-                                </time>
+                                {shouldShowDate && (
+                                    <time dateTime={dateTimeAttr} {...(enableAnnotations && { 'data-sb-field-path': 'date' })}>
+                                        {formattedDate}
+                                    </time>
+                                )}
                                 {author && (
                                     <>
-                                        <span className="mx-2">|</span>
+                                        {shouldShowDate && <span className="mx-2">|</span>}
                                         <PostAuthor author={author} enableAnnotations={enableAnnotations} />
                                     </>
                                 )}

@@ -68,6 +68,37 @@ export const PostLayout: Model = {
             group: 'thumbnail'
         },
         {
+            type: 'string',
+            name: 'category',
+            label: 'Category',
+            required: false,
+            hidden: false,
+            localized: false,
+            group: 'settings'
+        },
+        {
+            type: 'list',
+            name: 'tags',
+            label: 'Tags',
+            required: false,
+            hidden: false,
+            localized: false,
+            items: {
+                type: 'string'
+            },
+            group: 'settings'
+        },
+        {
+            type: 'string',
+            name: 'source',
+            label: 'Source URL',
+            description: 'GitHub or external source URL',
+            required: false,
+            hidden: false,
+            localized: false,
+            group: 'settings'
+        },
+        {
             type: 'model',
             name: 'featuredImage',
             label: 'Featured image',

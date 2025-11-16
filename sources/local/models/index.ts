@@ -24,6 +24,7 @@ import { Person } from './Person';
 import { PostFeedLayout } from './PostFeedLayout';
 import { PostFeedSection } from './PostFeedSection';
 import { PostLayout } from './PostLayout';
+import { ToolLayout } from './ToolLayout';
 import { PricingPlan } from './PricingPlan';
 import { PricingSection } from './PricingSection';
 import { RecentPostsSection } from './RecentPostsSection';
@@ -70,6 +71,7 @@ export const allModels = {
     PostFeedLayout,
     PostFeedSection,
     PostLayout,
+    ToolLayout,
     PricingPlan,
     PricingSection,
     RecentPostsSection,
