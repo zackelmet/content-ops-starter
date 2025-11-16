@@ -79,7 +79,7 @@ export default function PostFeedItem(props) {
                     </TitleTag>
                     <PostAttribution
                         showAuthor={showAuthor}
-                        showDate={showDate}
+                        showDate={post.category === 'redteam-tools' ? false : showDate}
                         date={post.date}
                         author={post.author}
                         className="mt-2"
@@ -97,7 +97,7 @@ export default function PostFeedItem(props) {
 }
 
 function PostAttribution({ showDate, showAuthor, date, author, className = '', hasAnnotations }) {
-    if (!showDate && !(showAuthor && author)) {
+    if ((!showDate || !date) && !(showAuthor && author)) {
         return null;
     }
     return (
@@ -107,10 +107,10 @@ function PostAttribution({ showDate, showAuthor, date, author, className = '', h
                     <span {...(hasAnnotations && { 'data-sb-field-path': 'author' })}>
                         <span {...(hasAnnotations && { 'data-sb-field-path': '.name' })}>{author.name}</span>
                     </span>
-                    {showDate && <span className="mx-2">|</span>}
+                    {showDate && date && <span className="mx-2">|</span>}
                 </>
             )}
-            {showDate && (
+            {showDate && date && (
                 <time dateTime={dayjs(date).format('YYYY-MM-DD HH:mm:ss')} {...(hasAnnotations && { 'data-sb-field-path': 'date' })}>
                     {dayjs(date).format('YYYY-MM-DD')}
                 </time>

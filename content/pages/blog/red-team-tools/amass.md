@@ -15,7 +15,7 @@ isFeatured: false
 tags: [osint, recon, dns]
 category: redteam-tools
 source: https://github.com/owasp-amass/amass
-type: PostLayout
+type: ToolLayout
 colors: bg-dark-fg-light
 ---
 

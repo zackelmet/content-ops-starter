@@ -15,7 +15,7 @@ isFeatured: false
 tags: [recon, osint, framework]
 category: redteam-tools
 source: https://github.com/lanmaster53/recon-ng
-type: PostLayout
+type: ToolLayout
 colors: bg-dark-fg-light
 ---
 

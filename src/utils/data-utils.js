@@ -10,7 +10,7 @@ export function getAllCategoryPostsSorted(objects, categoryId) {
 }
 
 export function getAllPosts(objects) {
-    return objects.filter((object) => object.__metadata?.modelName === 'PostLayout');
+    return objects.filter((object) => object.__metadata?.modelName === 'PostLayout' || object.__metadata?.modelName === 'ToolLayout');
 }
 
 export function getAllFeaturedPostsSorted(objects) {
