@@ -88,6 +88,18 @@ const StaticPropsResolvers = {
             posts: recentPosts
         };
     },
+    ToolsHeroSection: (props, data) => {
+        // Get all ToolLayout posts
+        let allTools = data.objects.filter((object) => object.__metadata?.modelName === 'ToolLayout');
+        if (!process.env.stackbitPreview) {
+            allTools = allTools.filter(isPublished);
+        }
+        const tools = resolveReferences(allTools, ['author', 'category'], data.objects);
+        return {
+            ...props,
+            posts: tools
+        };
+    },
     FeaturedPostsSection: (props, data, debugContext) => {
         return resolveReferences(props, ['posts.author', 'posts.category'], data.objects, debugContext);
     },

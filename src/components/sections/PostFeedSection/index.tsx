@@ -143,10 +143,8 @@ function PostFeedThreeColGrid(props) {
             {...(hasAnnotations && annotatePosts && { 'data-sb-field-path': '.posts' })}
         >
             {posts.map((post, index) => {
-                console.log(`[DEBUG] Post: ${post.title}, Type: ${post.type}, ModelName: ${post.__metadata?.modelName}`);
                 // Use RedTeamToolCard for ToolLayout type
                 if (post.type === 'ToolLayout') {
-                    console.log(`[DEBUG] ✅ Rendering RedTeamToolCard for: ${post.title}`);
                     return (
                         <RedTeamToolCard
                             key={index}
@@ -158,7 +156,6 @@ function PostFeedThreeColGrid(props) {
                     );
                 }
                 // Use regular PostFeedItem for other posts
-                console.log(`[DEBUG] ❌ Rendering PostFeedItem for: ${post.title}`);
                 return (
                     <PostFeedItem
                         key={index}
