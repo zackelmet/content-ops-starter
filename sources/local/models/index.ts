@@ -28,6 +28,7 @@ import { ToolLayout } from './ToolLayout';
 import { PricingPlan } from './PricingPlan';
 import { PricingSection } from './PricingSection';
 import { RecentPostsSection } from './RecentPostsSection';
+import { ToolsHeroSection } from './ToolsHeroSection';
 import { SelectFormControl } from './SelectFormControl';
 import { Social } from './Social';
 import { SubNav } from './SubNav';
@@ -75,6 +76,7 @@ export const allModels = {
     PricingPlan,
     PricingSection,
     RecentPostsSection,
+    ToolsHeroSection,
     SelectFormControl,
     Social,
     SubNav,
