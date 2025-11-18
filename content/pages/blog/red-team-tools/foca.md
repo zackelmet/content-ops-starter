@@ -5,7 +5,7 @@ date: '2025-11-18'
 excerpt: >-
   Document metadata discovery (runs via Wine)
 featuredImage:
-  url: https://thecreativecompany.us/cdn/shop/files/9798889894711_fc.jpg?v=1727789446
+  url: https://raw.githubusercontent.com/ElevenPaths/FOCA/refs/heads/master/doc/FOCA_White.jpg
   altText: FOCA
   styles:
     self:
