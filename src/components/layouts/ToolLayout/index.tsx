@@ -19,14 +19,23 @@ export default function ToolLayout(props) {
                     <div className="mx-auto max-w-screen-2xl">
                         {/* Tool Header */}
                         <header className="max-w-4xl mx-auto mb-12">
-                            {/* Category Badge */}
-                            {category && (
-                                <div className="mb-4">
-                                    <span className="inline-block px-4 py-2 text-sm font-semibold rounded-full bg-primary/20 text-primary border border-primary/30">
-                                        {category}
-                                    </span>
-                                </div>
-                            )}
+                            {/* Back Button */}
+                            <div className="mb-6">
+                                <Link
+                                    href="/redteam-tools"
+                                    className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-colors group"
+                                >
+                                    <svg 
+                                        className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                    <span className="font-semibold">Back to Red Team Tools</span>
+                                </Link>
+                            </div>
 
                             {/* Tool Name */}
                             <h1 className="text-5xl font-bold mb-6" {...(enableAnnotations && { 'data-sb-field-path': 'title' })}>
