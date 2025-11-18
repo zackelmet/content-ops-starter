@@ -15,7 +15,7 @@ isFeatured: false
 tags: [osint, emails]
 category: redteam-tools
 source: https://github.com/laramies/theHarvester
-type: PostLayout
+type: ToolLayout
 colors: bg-dark-fg-light
 ---
 
