@@ -4,6 +4,7 @@ import {
     getAllPostsSorted,
     getAllNonFeaturedPostsSorted,
     getAllCategoryPostsSorted,
+    sortPosts,
     getPagedItemsForPage,
     isPublished,
     mapDeepAsync
@@ -94,7 +95,9 @@ const StaticPropsResolvers = {
         if (!process.env.stackbitPreview) {
             allTools = allTools.filter(isPublished);
         }
-        const tools = resolveReferences(allTools, ['author', 'category'], data.objects);
+        // Sort tools by date (most recent first)
+        const sortedTools = sortPosts(allTools);
+        const tools = resolveReferences(sortedTools, ['author', 'category'], data.objects);
         return {
             ...props,
             posts: tools
