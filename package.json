@@ -12,6 +12,7 @@
         "algoliasearch": "^4.24.0",
         "classnames": "^2.5.1",
         "dayjs": "^1.11.11",
+        "firebase": "^12.6.0",
         "front-matter": "^4.0.2",
         "glob": "^10.4.2",
         "lottie-react": "^2.4.1",
@@ -25,8 +26,8 @@
         "three": "^0.179.1"
     },
     "devDependencies": {
-        "@netlify/plugin-nextjs": "4.40.0",
         "@base2/pretty-print-object": "^1.0.2",
+        "@netlify/plugin-nextjs": "4.40.0",
         "@stackbit/cms-git": "^1.0.32",
         "@stackbit/types": "^2.1.10",
         "@types/glob": "^8.1.0",
