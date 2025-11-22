@@ -1,6 +1,7 @@
 {
+    "title": "Hacker Analytics",
     "logo": {
-        "url": "/images/Untitled (100 x 100 px).png",
+        "url": "/images/HA-logo.png",
         "altText": "Logo",
         "styles": {
             "self": {
