@@ -136,13 +136,6 @@ function PricingPlan(props) {
                             )}
                         </div>
                     )}
-                        {details && (
-                                <div className="text-sm text-slate-400 mt-1" {...(fieldPath && { 'data-sb-field-path': '.details' })}>
-                                    {details}
-                                </div>
-                            )}
-                        </div>
-                    )}
                     {description && (
                         <Markdown
                             options={{ forceBlock: true, forceWrapper: true }}
