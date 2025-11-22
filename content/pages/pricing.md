@@ -26,9 +26,9 @@ sections:
     subtitle: Professional security scanning without the infrastructure overhead
     plans:
       - type: PricingPlan
-        title: Starter
-        price: $49
-        details: per month
+        title: Essential
+        price: $96
+        details: per year
         description: Perfect for small teams and individual security professionals
         features:
           - 100 scans per month
@@ -37,16 +37,16 @@ sections:
           - Email support
           - 7-day money-back guarantee
         actions:
-          - type: Button
+          - type: CheckoutButton
+            tier: ESSENTIAL
             label: Get Started
-            url: '#'
             style: primary
         colors: bg-light-fg-dark
         
       - type: PricingPlan
-        title: Professional
-        price: $149
-        details: per month
+        title: Pro
+        price: $240
+        details: per year
         description: For security teams requiring comprehensive scanning capabilities
         features:
           - 500 scans per month
@@ -57,16 +57,16 @@ sections:
           - API access
           - 7-day money-back guarantee
         actions:
-          - type: Button
+          - type: CheckoutButton
+            tier: PRO
             label: Get Started
-            url: '#'
             style: primary
         colors: bg-light-fg-dark
         
       - type: PricingPlan
-        title: Enterprise
-        price: $499
-        details: per month
+        title: Scale
+        price: $720
+        details: per year
         description: For organizations with demanding security assessment requirements
         features:
           - Unlimited scans
@@ -78,9 +78,9 @@ sections:
           - Advanced reporting & analytics
           - 7-day money-back guarantee
         actions:
-          - type: Button
-            label: Contact Sales
-            url: '#'
+          - type: CheckoutButton
+            tier: SCALE
+            label: Get Started
             style: primary
         colors: bg-light-fg-dark
         
