@@ -12,18 +12,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
+        // Check required environment variables
+        if (!process.env.STRIPE_SECRET_KEY) {
+            console.error('STRIPE_SECRET_KEY is not set');
+            return res.status(500).json({ error: 'Server configuration error: Missing Stripe key' });
+        }
+
+        if (!process.env.NEXT_PUBLIC_BASE_URL) {
+            console.error('NEXT_PUBLIC_BASE_URL is not set');
+            return res.status(500).json({ error: 'Server configuration error: Missing base URL' });
+        }
+
         const { priceId, idToken } = req.body;
 
         if (!priceId || !idToken) {
+            console.error('Missing required fields:', { priceId: !!priceId, idToken: !!idToken });
             return res.status(400).json({ error: 'Missing priceId or idToken' });
         }
 
         // Verify Firebase ID token
+        console.log('Verifying Firebase ID token...');
         const decodedToken = await auth.verifyIdToken(idToken);
         const userId = decodedToken.uid;
         const userEmail = decodedToken.email;
+        console.log('Token verified for user:', userId);
 
         // Create Stripe checkout session
+        console.log('Creating Stripe checkout session with priceId:', priceId);
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             payment_method_types: ['card'],
@@ -43,9 +58,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             },
         });
 
+        console.log('Checkout session created successfully:', session.id);
         return res.status(200).json({ sessionId: session.id, url: session.url });
     } catch (error: any) {
         console.error('Error creating checkout session:', error);
-        return res.status(500).json({ error: error.message });
+        console.error('Error details:', {
+            message: error.message,
+            type: error.type,
+            code: error.code,
+            statusCode: error.statusCode
+        });
+        return res.status(500).json({ 
+            error: error.message || 'Failed to create checkout session',
+            details: process.env.NODE_ENV === 'development' ? error.toString() : undefined
+        });
     }
 }
