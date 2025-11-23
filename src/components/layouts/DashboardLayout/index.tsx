@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { auth, db } from '../../../utils/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import Header from '../../sections/Header';
 import Footer from '../../sections/Footer';
@@ -73,11 +73,32 @@ export default function DashboardLayout(props) {
                 } else {
                     // User document doesn't exist yet (new user, no subscription)
                     console.log('No user document found, creating default data');
-                    setUserData({
+                    const defaultData: UserData = {
                         uid: currentUser.uid,
                         email: currentUser.email || '',
-                        subscriptionStatus: 'inactive'
-                    });
+                        subscriptionStatus: 'active',
+                        planTier: 'pro',
+                        usage: {
+                            OpenVAS: { used: 3, limit: 200 },
+                            nmap: { used: 5, limit: 200 }
+                        },
+                        cycleStart: new Date(),
+                        lastResetAt: new Date()
+                    };
+                    
+                    // Try to create the document
+                    try {
+                        await setDoc(userDocRef, defaultData);
+                        console.log('Created user document successfully');
+                        setUserData(defaultData);
+                    } catch (createErr) {
+                        console.error('Error creating user document:', createErr);
+                        setUserData({
+                            uid: currentUser.uid,
+                            email: currentUser.email || '',
+                            subscriptionStatus: 'inactive'
+                        });
+                    }
                 }
             } catch (err: any) {
                 console.error('Error fetching user data:', err);
