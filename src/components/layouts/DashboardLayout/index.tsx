@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
@@ -31,38 +29,14 @@ interface UserData {
 
 export default function DashboardLayout(props) {
     const { page, site } = props;
-    const { enableAnnotations = true } = site || {};
+    const { enableAnnotations = true } = site;
     const pageMeta = page?.__metadata || {};
-    
+    const router = useRouter();
+
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<any>(null);
     const [userData, setUserData] = useState<UserData | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [isClient, setIsClient] = useState(false);
-
-    // Use router conditionally
-    let router;
-    try {
-        router = useRouter();
-    } catch (e) {
-        // Router not available during SSR
-    }
-
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
-
-    // Early return for SSR/build time
-    if (!isClient) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-900">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
-                    <p className="text-gray-400">Loading...</p>
-                </div>
-            </div>
-        );
-    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -82,15 +56,22 @@ export default function DashboardLayout(props) {
                     setUserData(userDoc.data() as UserData);
                 } else {
                     // User document doesn't exist yet (new user, no subscription)
+                    console.log('No user document found, creating default data');
                     setUserData({
                         uid: currentUser.uid,
                         email: currentUser.email || '',
                         subscriptionStatus: 'inactive'
                     });
                 }
-            } catch (err) {
+            } catch (err: any) {
                 console.error('Error fetching user data:', err);
-                setError('Failed to load subscription data');
+                
+                // Check if it's a permission error
+                if (err.code === 'permission-denied') {
+                    setError('Access denied. Please ensure you are logged in with the correct account.');
+                } else {
+                    setError('Failed to load subscription data: ' + (err.message || 'Unknown error'));
+                }
             } finally {
                 setLoading(false);
             }

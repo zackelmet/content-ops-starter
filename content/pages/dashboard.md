@@ -1,9 +1,7 @@
 ---
-type: DashboardLayout
 title: Dashboard
-sections: []
+slug: /dashboard
+type: DashboardLayout
+sections:
+  - type: DashboardSection
 ---
-
-# Dashboard
-
-Your cybersecurity command center.
