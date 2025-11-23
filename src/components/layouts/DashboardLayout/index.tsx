@@ -10,17 +10,23 @@ import { onAuthStateChanged } from 'firebase/auth';
 import Header from '../../sections/Header';
 import Footer from '../../sections/Footer';
 
+interface ScannerUsage {
+    used: number;
+    limit: number;
+}
+
 interface UserData {
     uid: string;
     email: string;
     stripeCustomerId?: string;
     subscriptionId?: string;
     planTier?: string;
-    monthlyLimit?: number;
-    scansUsed?: number;
     cycleStart?: any;
     lastResetAt?: any;
     subscriptionStatus?: string;
+    usage?: {
+        [scannerType: string]: ScannerUsage;
+    };
 }
 
 export default function DashboardLayout(props) {
@@ -70,8 +76,23 @@ export default function DashboardLayout(props) {
     }, [router]);
 
     const isActive = userData?.subscriptionStatus === 'active' || userData?.subscriptionStatus === 'trialing';
-    const usagePercent = userData?.monthlyLimit 
-        ? Math.min(((userData.scansUsed || 0) / userData.monthlyLimit) * 100, 100)
+    
+    // Calculate total usage across all scanners
+    const getTotalUsage = () => {
+        if (!userData?.usage) return { used: 0, limit: 0 };
+        const scanners = Object.values(userData.usage);
+        return scanners.reduce(
+            (acc, scanner) => ({
+                used: acc.used + scanner.used,
+                limit: acc.limit + scanner.limit
+            }),
+            { used: 0, limit: 0 }
+        );
+    };
+    
+    const totalUsage = getTotalUsage();
+    const usagePercent = totalUsage.limit 
+        ? Math.min((totalUsage.used / totalUsage.limit) * 100, 100)
         : 0;
 
     const getTierBadgeColor = (tier?: string) => {
@@ -146,9 +167,9 @@ export default function DashboardLayout(props) {
                                 </div>
 
                                 <div className="bg-slate-900/50 rounded-lg p-4">
-                                    <p className="text-gray-400 text-sm mb-1">Monthly Scans</p>
+                                    <p className="text-gray-400 text-sm mb-1">Total Scans</p>
                                     <p className="text-lg font-semibold text-white">
-                                        {userData?.scansUsed || 0} / {userData?.monthlyLimit || 0}
+                                        {totalUsage.used} / {totalUsage.limit}
                                     </p>
                                 </div>
 
@@ -164,10 +185,10 @@ export default function DashboardLayout(props) {
                             </div>
 
                             {/* Usage Bar */}
-                            {userData?.monthlyLimit && (
+                            {totalUsage.limit > 0 && (
                                 <div className="mt-6">
                                     <div className="flex justify-between text-sm mb-2">
-                                        <span className="text-gray-400">Scan Usage</span>
+                                        <span className="text-gray-400">Total Scan Usage</span>
                                         <span className="text-gray-400">{usagePercent.toFixed(0)}%</span>
                                     </div>
                                     <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
@@ -180,6 +201,38 @@ export default function DashboardLayout(props) {
                                             )}
                                             style={{ width: `${usagePercent}%` }}
                                         />
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {/* Per-Scanner Usage Breakdown */}
+                            {userData?.usage && Object.keys(userData.usage).length > 0 && (
+                                <div className="mt-6">
+                                    <h3 className="text-lg font-semibold text-white mb-3">Scanner Usage</h3>
+                                    <div className="grid md:grid-cols-2 gap-3">
+                                        {Object.entries(userData.usage).map(([scannerType, usage]) => {
+                                            const percent = usage.limit > 0 
+                                                ? Math.min((usage.used / usage.limit) * 100, 100)
+                                                : 0;
+                                            return (
+                                                <div key={scannerType} className="bg-slate-900/50 rounded-lg p-3">
+                                                    <div className="flex justify-between items-center mb-2">
+                                                        <span className="text-gray-300 capitalize font-medium">
+                                                            {scannerType.replace(/([A-Z])/g, ' $1').trim()}
+                                                        </span>
+                                                        <span className="text-gray-400 text-sm">
+                                                            {usage.used}/{usage.limit}
+                                                        </span>
+                                                    </div>
+                                                    <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
+                                                        <div 
+                                                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"
+                                                            style={{ width: `${percent}%` }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             )}

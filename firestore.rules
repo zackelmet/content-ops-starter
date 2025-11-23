@@ -8,15 +8,14 @@ service cloud.firestore {
       allow read: if request.auth != null && request.auth.uid == userId;
       
       // Only allow writes from authenticated users to their own document
-      // But restrict which fields can be updated (prevent users from modifying subscription data)
+      // But restrict which fields can be updated (prevent users from modifying subscription/usage data)
       allow update: if request.auth != null 
                     && request.auth.uid == userId
                     && !request.resource.data.diff(resource.data).affectedKeys().hasAny([
                       'stripeCustomerId', 
                       'subscriptionId', 
                       'planTier', 
-                      'monthlyLimit', 
-                      'scansUsed', 
+                      'usage',  // Prevent direct usage manipulation
                       'subscriptionStatus',
                       'cycleStart',
                       'lastResetAt'

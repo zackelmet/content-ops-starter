@@ -6,7 +6,7 @@
 Collection: users
 Document ID: {uid} (your Firebase Auth user ID)
 
-Example structure:
+Example structure with nested usage map:
 */
 
 const exampleUserDocument = {
@@ -15,11 +15,30 @@ const exampleUserDocument = {
   stripeCustomerId: "cus_123456789", // Set by Stripe webhook
   subscriptionId: "sub_987654321", // Set by Stripe webhook
   planTier: "pro", // Options: "basic", "pro", "premium"
-  monthlyLimit: 200, // 50 for basic, 200 for pro, 999999 for premium
-  scansUsed: 0, // Incremented on each scan
   cycleStart: new Date(), // Timestamp - start of billing cycle
-  lastResetAt: new Date(), // Timestamp - when scansUsed was last reset
-  subscriptionStatus: "active" // Options: "active", "trialing", "inactive", "canceled"
+  lastResetAt: new Date(), // Timestamp - when usage was last reset
+  subscriptionStatus: "active", // Options: "active", "trialing", "inactive", "canceled"
+  
+  // NEW: Per-scanner usage tracking (nested map)
+  usage: {
+    vulnerability: {
+      used: 0,
+      limit: 200  // Tier-specific limit
+    },
+    portScan: {
+      used: 0,
+      limit: 200
+    },
+    malwareAnalysis: {
+      used: 0,
+      limit: 50  // Premium-only feature
+    },
+    dnsRecon: {
+      used: 0,
+      limit: 100
+    }
+    // Easy to add more scanner types as needed
+  }
 };
 
 /*
@@ -35,13 +54,48 @@ To set up in Firebase Console:
    - uid (string): your Firebase Auth UID
    - email (string): your email
    - planTier (string): "basic" or "pro" or "premium"
-   - monthlyLimit (number): 50 (basic), 200 (pro), or 999999 (premium)
-   - scansUsed (number): 0
    - subscriptionStatus (string): "active"
    - cycleStart (timestamp): Click "Use current time"
    - lastResetAt (timestamp): Click "Use current time"
    - stripeCustomerId (string): Leave empty for now (webhook will set)
    - subscriptionId (string): Leave empty for now (webhook will set)
+   
+8. Add nested map for usage:
+   - Click "Add field"
+   - Field name: "usage"
+   - Type: "map"
+   - Add nested fields within the map:
+     - vulnerability (map):
+       - used (number): 0
+       - limit (number): 200
+     - portScan (map):
+       - used (number): 0
+       - limit (number): 200
+     - malwareAnalysis (map):
+       - used (number): 0
+       - limit (number): 50
+     - dnsRecon (map):
+       - used (number): 0
+       - limit (number): 100
 
-8. Click "Save"
+9. Click "Save"
+
+TIER-SPECIFIC LIMITS:
+Basic ($8/mo):
+  - vulnerability: 50
+  - portScan: 50
+  - dnsRecon: 25
+  - malwareAnalysis: 0 (not included)
+
+Pro ($20/mo):
+  - vulnerability: 200
+  - portScan: 200
+  - dnsRecon: 100
+  - malwareAnalysis: 50
+
+Premium ($99/mo):
+  - vulnerability: 999999 (unlimited)
+  - portScan: 999999 (unlimited)
+  - dnsRecon: 999999 (unlimited)
+  - malwareAnalysis: 999999 (unlimited)
 */
