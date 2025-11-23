@@ -31,7 +31,7 @@ interface UserData {
 
 export default function DashboardLayout(props) {
     const { page, site } = props;
-    const { enableAnnotations = true } = site;
+    const { enableAnnotations = true } = site || {};
     const pageMeta = page?.__metadata || {};
     const router = useRouter();
 
@@ -39,6 +39,11 @@ export default function DashboardLayout(props) {
     const [user, setUser] = useState<any>(null);
     const [userData, setUserData] = useState<UserData | null>(null);
     const [error, setError] = useState<string | null>(null);
+
+    // Early return for SSR/build time
+    if (typeof window === 'undefined') {
+        return null;
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {

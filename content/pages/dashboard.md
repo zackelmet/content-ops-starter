@@ -1,5 +1,5 @@
 ---
-type: PageLayout
+type: DashboardLayout
 title: Dashboard
 sections: []
 ---
