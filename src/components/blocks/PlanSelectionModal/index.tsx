@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { auth } from '../../../utils/firebase';
 
 interface PlanSelectionModalProps {
     onClose: () => void;
@@ -12,10 +13,19 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
         setLoading(tier);
         
         try {
+            // Get Firebase ID token
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please sign in to continue');
+                return;
+            }
+
+            const idToken = await user.getIdToken();
+
             const response = await fetch('/api/stripe/create-checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ tier, priceId })
+                body: JSON.stringify({ priceId, idToken })
             });
 
             if (!response.ok) {
