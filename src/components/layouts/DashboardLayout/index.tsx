@@ -7,6 +7,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import Header from '../../sections/Header';
 import Footer from '../../sections/Footer';
+import PlanSelectionModal from '../../blocks/PlanSelectionModal';
 
 interface ScannerUsage {
     used: number;
@@ -37,6 +38,7 @@ export default function DashboardLayout(props) {
     const [user, setUser] = useState<any>(null);
     const [userData, setUserData] = useState<UserData | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [showPlanModal, setShowPlanModal] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -69,14 +71,6 @@ export default function DashboardLayout(props) {
                 if (userDoc.exists()) {
                     const data = userDoc.data() as UserData;
                     console.log('User document data:', JSON.stringify(data, null, 2));
-                    
-                    // Redirect inactive users to pricing page
-                    if (data.subscriptionStatus === 'inactive') {
-                        console.log('User has inactive subscription, redirecting to pricing');
-                        window.location.href = '/pricing';
-                        return;
-                    }
-                    
                     setUserData(data);
                 } else {
                     // User document doesn't exist yet (new user, no subscription)
@@ -107,6 +101,12 @@ export default function DashboardLayout(props) {
                             subscriptionStatus: 'inactive'
                         });
                     }
+                }
+                
+                // Check if user needs to see plan modal
+                const data = userDoc.exists() ? userDoc.data() as UserData : null;
+                if (data && data.subscriptionStatus === 'inactive') {
+                    setShowPlanModal(true);
                 }
             } catch (err: any) {
                 console.error('Error fetching user data:', err);
@@ -344,6 +344,11 @@ export default function DashboardLayout(props) {
 
                 {site.footer && <Footer {...site.footer} enableAnnotations={enableAnnotations} />}
             </div>
+            
+            {/* Plan Selection Modal for Inactive Users */}
+            {showPlanModal && userData?.subscriptionStatus === 'inactive' && (
+                <PlanSelectionModal onClose={() => setShowPlanModal(false)} />
+            )}
         </div>
     );
 }
