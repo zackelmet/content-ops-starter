@@ -72,15 +72,15 @@ export default function DashboardLayout(props) {
                     setUserData(data);
                 } else {
                     // User document doesn't exist yet (new user, no subscription)
-                    console.log('No user document found, creating default data');
+                    console.log('No user document found, creating free tier user');
                     const defaultData: UserData = {
                         uid: currentUser.uid,
                         email: currentUser.email || '',
-                        subscriptionStatus: 'active',
-                        planTier: 'pro',
+                        subscriptionStatus: 'inactive',
+                        planTier: 'free',
                         usage: {
-                            OpenVAS: { used: 3, limit: 200 },
-                            nmap: { used: 5, limit: 200 }
+                            OpenVAS: { used: 0, limit: 0 },
+                            nmap: { used: 0, limit: 0 }
                         },
                         cycleStart: new Date(),
                         lastResetAt: new Date()
@@ -89,7 +89,7 @@ export default function DashboardLayout(props) {
                     // Try to create the document
                     try {
                         await setDoc(userDocRef, defaultData);
-                        console.log('Created user document successfully');
+                        console.log('Created free tier user document successfully');
                         setUserData(defaultData);
                     } catch (createErr) {
                         console.error('Error creating user document:', createErr);
