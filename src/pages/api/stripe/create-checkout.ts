@@ -38,6 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             customer_email: userEmail,
             client_reference_id: userId,
             metadata: {
+                userId: userId, // Used by webhook to identify user
                 firebaseUserId: userId,
             },
         });
