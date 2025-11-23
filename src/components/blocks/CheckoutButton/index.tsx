@@ -11,11 +11,6 @@ interface CheckoutButtonProps {
 
 export default function CheckoutButton({ tier, label = 'Get Started', style = 'primary' }: CheckoutButtonProps) {
     const [loading, setLoading] = useState(false);
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     const priceIds = {
         ESSENTIAL: process.env.NEXT_PUBLIC_STRIPE_PRICE_ESSENTIAL,
@@ -61,20 +56,6 @@ export default function CheckoutButton({ tier, label = 'Get Started', style = 'p
             setLoading(false);
         }
     };
-
-    // Show consistent state during SSR
-    if (!mounted) {
-        return (
-            <button
-                disabled
-                className={`sb-component sb-component-block sb-component-button ${
-                    style === 'primary' ? 'sb-component-button-primary' : 'sb-component-button-secondary'
-                }`}
-            >
-                {label}
-            </button>
-        );
-    }
 
     return (
         <button
