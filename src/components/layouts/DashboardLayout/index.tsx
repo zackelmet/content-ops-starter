@@ -46,10 +46,15 @@ export default function DashboardLayout(props) {
             }
 
             setUser(currentUser);
+            
+            // Log the user's UID for debugging
+            console.log('Current user UID:', currentUser.uid);
+            console.log('Current user email:', currentUser.email);
 
             try {
                 // Fetch user data from Firestore
                 const userDocRef = doc(db, 'users', currentUser.uid);
+                console.log('Attempting to fetch document:', `users/${currentUser.uid}`);
                 const userDoc = await getDoc(userDocRef);
 
                 if (userDoc.exists()) {
@@ -243,21 +248,21 @@ export default function DashboardLayout(props) {
                             )}
                         </div>
 
-                        {/* Main Content Area - Greyed out if inactive */}
+                        {/* Main Content Area */}
                         <div className={classNames(
-                            'bg-slate-800 rounded-xl border p-6 transition-all',
-                            isActive ? 'border-gray-700' : 'border-gray-700 opacity-50 pointer-events-none'
+                            'bg-slate-800 rounded-xl border p-6 transition-all relative',
+                            isActive ? 'border-gray-700' : 'border-gray-700'
                         )}>
                             <h2 className="text-2xl font-bold text-white mb-4">Scanner Tools</h2>
                             
                             {!isActive && (
-                                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/80 rounded-xl">
+                                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/90 rounded-xl z-10">
                                     <div className="text-center p-8">
                                         <svg className="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                         </svg>
                                         <h3 className="text-xl font-bold text-white mb-2">Subscription Required</h3>
-                                        <p className="text-gray-400 mb-4">Please subscribe to access scanner tools</p>
+                                        <p className="text-gray-400 mb-4">Subscribe to unlock scanner tools and start scanning</p>
                                         <a 
                                             href="/pricing" 
                                             className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-600 transition-all"
@@ -268,7 +273,7 @@ export default function DashboardLayout(props) {
                                 </div>
                             )}
 
-                            <div className={classNames('space-y-4', !isActive && 'relative')}>
+                            <div className="space-y-4">
                                 <div className="bg-slate-900/50 rounded-lg p-6">
                                     <h3 className="text-xl font-semibold text-white mb-2">Quick Scan</h3>
                                     <p className="text-gray-400 mb-4">Perform a vulnerability scan on a target IP or URL</p>
