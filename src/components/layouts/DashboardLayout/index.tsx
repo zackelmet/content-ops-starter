@@ -33,16 +33,35 @@ export default function DashboardLayout(props) {
     const { page, site } = props;
     const { enableAnnotations = true } = site || {};
     const pageMeta = page?.__metadata || {};
-    const router = useRouter();
-
+    
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<any>(null);
     const [userData, setUserData] = useState<UserData | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [isClient, setIsClient] = useState(false);
+
+    // Use router conditionally
+    let router;
+    try {
+        router = useRouter();
+    } catch (e) {
+        // Router not available during SSR
+    }
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     // Early return for SSR/build time
-    if (typeof window === 'undefined') {
-        return null;
+    if (!isClient) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-slate-900">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
+                    <p className="text-gray-400">Loading...</p>
+                </div>
+            </div>
+        );
     }
 
     useEffect(() => {
