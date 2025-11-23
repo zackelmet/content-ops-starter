@@ -50,15 +50,26 @@ export default function DashboardLayout(props) {
             // Log the user's UID for debugging
             console.log('Current user UID:', currentUser.uid);
             console.log('Current user email:', currentUser.email);
+            
+            // Get fresh ID token to ensure auth is ready
+            try {
+                const token = await currentUser.getIdToken(true);
+                console.log('Auth token obtained, length:', token.length);
+            } catch (tokenErr) {
+                console.error('Error getting auth token:', tokenErr);
+            }
 
             try {
                 // Fetch user data from Firestore
                 const userDocRef = doc(db, 'users', currentUser.uid);
                 console.log('Attempting to fetch document:', `users/${currentUser.uid}`);
                 const userDoc = await getDoc(userDocRef);
+                console.log('Document fetch completed. Exists?', userDoc.exists());
 
                 if (userDoc.exists()) {
-                    setUserData(userDoc.data() as UserData);
+                    const data = userDoc.data() as UserData;
+                    console.log('User document data:', JSON.stringify(data, null, 2));
+                    setUserData(data);
                 } else {
                     // User document doesn't exist yet (new user, no subscription)
                     console.log('No user document found, creating default data');
@@ -70,6 +81,8 @@ export default function DashboardLayout(props) {
                 }
             } catch (err: any) {
                 console.error('Error fetching user data:', err);
+                console.error('Error code:', err.code);
+                console.error('Error message:', err.message);
                 
                 // Check if it's a permission error
                 if (err.code === 'permission-denied') {
