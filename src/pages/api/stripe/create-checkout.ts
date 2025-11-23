@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
+import { auth } from '../../../utils/firebase-admin';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2025-11-17.clover'
@@ -18,7 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
         // Verify Firebase ID token
-        const { auth } = await import('../../../utils/firebase-admin');
         const decodedToken = await auth.verifyIdToken(idToken);
         const userId = decodedToken.uid;
         const userEmail = decodedToken.email;
