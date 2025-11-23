@@ -67,6 +67,7 @@ const components = {
     PostLayout: dynamic(() => import('./layouts/PostLayout')),
     ToolLayout: dynamic(() => import('./layouts/ToolLayout')),
     LoginLayout: dynamic(() => import('./layouts/LoginLayout')),
+    SignupLayout: dynamic(() => import('./layouts/SignupLayout')),
     DashboardLayout: dynamic(() => import('./layouts/DashboardLayout'), { ssr: false }),
     PostFeedLayout: dynamic(() => import('./layouts/PostFeedLayout')),
     PostFeedCategoryLayout: dynamic(() => import('./layouts/PostFeedCategoryLayout'))

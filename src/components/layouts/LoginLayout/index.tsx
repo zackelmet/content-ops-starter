@@ -14,7 +14,7 @@ export default function LoginPage(props) {
                 <div className="bg-neutral-fg-dark py-20">
                     <div className="max-w-md mx-auto px-4">
                         <div className="text-center mb-8">
-                            <h1 className="text-4xl font-bold mb-4">Sign In or Sign Up</h1>
+                            <h1 className="text-4xl font-bold mb-4">Sign In</h1>
                             <p className="text-xl text-neutral-300">Access your vulnerability scanning dashboard</p>
                         </div>
                         
@@ -23,7 +23,10 @@ export default function LoginPage(props) {
                             
                             <div className="mt-6 text-center text-sm">
                                 <p className="text-neutral-400">
-                                    New user? Google Sign-In will automatically create your account.
+                                    Don't have an account?{' '}
+                                    <a href="/signup" className="text-primary-500 hover:underline font-semibold">
+                                        Sign up
+                                    </a>
                                 </p>
                             </div>
                         </div>

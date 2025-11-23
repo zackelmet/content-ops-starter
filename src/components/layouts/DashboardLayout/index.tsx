@@ -69,6 +69,14 @@ export default function DashboardLayout(props) {
                 if (userDoc.exists()) {
                     const data = userDoc.data() as UserData;
                     console.log('User document data:', JSON.stringify(data, null, 2));
+                    
+                    // Redirect inactive users to pricing page
+                    if (data.subscriptionStatus === 'inactive') {
+                        console.log('User has inactive subscription, redirecting to pricing');
+                        window.location.href = '/pricing';
+                        return;
+                    }
+                    
                     setUserData(data);
                 } else {
                     // User document doesn't exist yet (new user, no subscription)
