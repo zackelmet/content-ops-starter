@@ -50,11 +50,33 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
                 body: JSON.stringify({ priceId, idToken })
             });
 
+            console.log('Response received:', {
+                status: response.status,
+                statusText: response.statusText,
+                ok: response.ok,
+                headers: Object.fromEntries(response.headers.entries())
+            });
+
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ error: 'Server error occurred' }));
+                // Get full error details from API
+                const errorText = await response.text();
+                console.log('Raw error text:', errorText);
+
+                let errorData;
+                try {
+                    errorData = JSON.parse(errorText);
+                } catch (parseError) {
+                    console.error('Failed to parse error JSON:', parseError);
+                    errorData = { error: errorText || 'Server error occurred' };
+                }
+
                 console.error('Checkout failed:', errorData);
                 console.error('Response status:', response.status);
-                throw new Error(errorData.error || `Server error (${response.status})`);
+                console.error('Full error response:', errorText);
+
+                // Display detailed error to user
+                const errorMessage = errorData.error || errorData.message || errorData.details || errorText || `Server error (${response.status})`;
+                throw new Error(errorMessage);
             }
 
             const { url } = await response.json();
