@@ -9,14 +9,36 @@ interface PlanSelectionModalProps {
 export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps) {
     const [loading, setLoading] = useState<string | null>(null);
 
-    const handleCheckout = async (tier: string, priceId: string) => {
+    // Price IDs from environment
+    const priceIds = {
+        essential: process.env.NEXT_PUBLIC_STRIPE_PRICE_ESSENTIAL,
+        pro: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO,
+        scale: process.env.NEXT_PUBLIC_STRIPE_PRICE_SCALE
+    };
+
+    // Log environment variables for debugging (only in development)
+    React.useEffect(() => {
+        console.log('Stripe Price IDs:', {
+            essential: priceIds.essential ? '✓ Set' : '✗ Missing',
+            pro: priceIds.pro ? '✓ Set' : '✗ Missing',
+            scale: priceIds.scale ? '✓ Set' : '✗ Missing'
+        });
+    }, []);
+
+    const handleCheckout = async (tier: string, priceId: string | undefined) => {
         setLoading(tier);
-        
+
         try {
+            // Validate price ID
+            if (!priceId) {
+                throw new Error(`Price ID for ${tier} plan is not configured. Please contact support.`);
+            }
+
             // Get Firebase ID token
             const user = auth.currentUser;
             if (!user) {
                 alert('Please sign in to continue');
+                setLoading(null);
                 return;
             }
 
@@ -29,16 +51,28 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
             });
 
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+                const errorData = await response.json().catch(() => ({ error: 'Server error occurred' }));
                 console.error('Checkout failed:', errorData);
-                throw new Error(errorData.error || 'Failed to create checkout session');
+                console.error('Response status:', response.status);
+                throw new Error(errorData.error || `Server error (${response.status})`);
             }
 
             const { url } = await response.json();
+
+            if (!url) {
+                throw new Error('No checkout URL received from server');
+            }
+
             window.location.href = url;
         } catch (error: any) {
             console.error('Checkout error:', error);
-            alert(`Failed to start checkout: ${error.message || 'Please try again.'}`);
+            console.error('Error details:', {
+                message: error.message,
+                tier: tier,
+                priceId: priceId,
+                hasUser: !!auth.currentUser
+            });
+            alert(`Failed to start checkout: ${error.message || 'Unknown error occurred'}`);
             setLoading(null);
         }
     };
@@ -78,7 +112,7 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
                             </li>
                         </ul>
                         <button
-                            onClick={() => handleCheckout('essential', process.env.NEXT_PUBLIC_STRIPE_PRICE_ESSENTIAL!)}
+                            onClick={() => handleCheckout('essential', priceIds.essential)}
                             disabled={loading !== null}
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
@@ -121,7 +155,7 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
                             </li>
                         </ul>
                         <button
-                            onClick={() => handleCheckout('pro', process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO!)}
+                            onClick={() => handleCheckout('pro', priceIds.pro)}
                             disabled={loading !== null}
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
@@ -163,7 +197,7 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
                             </li>
                         </ul>
                         <button
-                            onClick={() => handleCheckout('scale', process.env.NEXT_PUBLIC_STRIPE_PRICE_SCALE!)}
+                            onClick={() => handleCheckout('scale', priceIds.scale)}
                             disabled={loading !== null}
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >

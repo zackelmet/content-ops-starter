@@ -80,14 +80,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         switch (event.type) {
             case 'checkout.session.completed': {
                 const session = event.data.object as Stripe.Checkout.Session;
-                
+
                 // Get customer details
                 const customerId = session.customer as string;
                 const subscriptionId = session.subscription as string;
-                
+
                 // Get user ID from metadata (set during checkout)
                 const userId = session.metadata?.userId;
-                
+
                 if (!userId) {
                     console.error('❌ No userId in session metadata');
                     return res.status(400).json({ error: 'No userId in metadata' });
@@ -127,7 +127,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             case 'customer.subscription.updated': {
                 const subscription = event.data.object as Stripe.Subscription;
                 const customerId = subscription.customer as string;
-                
+
                 // Find user by Stripe customer ID
                 const usersSnapshot = await db.collection('users')
                     .where('stripeCustomerId', '==', customerId)
