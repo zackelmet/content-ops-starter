@@ -29,14 +29,16 @@ export default function PlanSelectionModal({ onClose }: PlanSelectionModalProps)
             });
 
             if (!response.ok) {
-                throw new Error('Failed to create checkout session');
+                const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+                console.error('Checkout failed:', errorData);
+                throw new Error(errorData.error || 'Failed to create checkout session');
             }
 
             const { url } = await response.json();
             window.location.href = url;
-        } catch (error) {
+        } catch (error: any) {
             console.error('Checkout error:', error);
-            alert('Failed to start checkout. Please try again.');
+            alert(`Failed to start checkout: ${error.message || 'Please try again.'}`);
             setLoading(null);
         }
     };

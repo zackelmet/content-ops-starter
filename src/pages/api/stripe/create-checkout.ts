@@ -66,11 +66,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             message: error.message,
             type: error.type,
             code: error.code,
-            statusCode: error.statusCode
+            statusCode: error.statusCode,
+            stack: error.stack
         });
         return res.status(500).json({ 
             error: error.message || 'Failed to create checkout session',
-            details: process.env.NODE_ENV === 'development' ? error.toString() : undefined
+            type: error.type,
+            code: error.code,
+            details: error.toString(),
+            stack: error.stack?.split('\n').slice(0, 3).join('\n') // First 3 lines of stack
         });
     }
 }
